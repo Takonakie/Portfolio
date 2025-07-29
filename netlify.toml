@@ -1,0 +1,8 @@
+[build]
+  command = "npm run build"
+  publish = "build/" # Ganti menjadi "dist/" jika Anda menggunakan Vite
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
