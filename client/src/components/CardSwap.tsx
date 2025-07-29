@@ -74,8 +74,8 @@ const placeNow = (el: HTMLElement, slot: Slot, skew: number) =>
   });
 
 const CardSwap: React.FC<CardSwapProps> = ({
-  width = 500,
-  height = 400,
+  width = 350,
+  height = 250,
   cardDistance = 60,
   verticalDistance = 70,
   delay = 5000,
@@ -140,7 +140,7 @@ const CardSwap: React.FC<CardSwapProps> = ({
       tlRef.current = tl;
 
       tl.to(elFront, {
-        y: "+=500",
+        y: "+=100",
         duration: config.durDrop,
         ease: config.ease,
       });

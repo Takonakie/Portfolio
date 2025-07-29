@@ -3,6 +3,7 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Github, ExternalLink } from 'lucide-react';
 import ProjectModal from './ProjectModal';
+import CardSwap, { Card } from './CardSwap';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -162,11 +163,36 @@ export default function Projects() {
   }, []);
 
   return (
-    <section id="projects" className="py-20 bg-secondary">
+    <section id="projects" className="py-10 bg-secondary">
       <div className="container mx-auto px-6">
-        <h2 className="projects-title text-4xl md:text-5xl font-bold text-center mb-16 opacity-0">
-          Featured <span className="text-accent">Projects</span>
-        </h2>
+        <div className='flex flex-col lg:flex-row lg:justify-between lg:mt-40'>
+          <div className='flex flex-col items-center gap-4 mt-10'>
+            <h2 className="projects-title text-4xl md:text-5xl font-bold text-center opacity-0">
+              Featured <span className="text-accent">Projects</span>
+            </h2>
+            <h3 className="projects-title flex flex-col w-70 mb-10 sm:mb-20 md:mb-60 opacity-0">
+              The following are projects I have completed to date, <span> encompassing both Machine Learning and Web Development. </span> 
+            </h3>
+          </div>
+          <div className='projects-title h-[200px] mr-[185px] sm:mr-[280px] md:mr-[250px] lg:mr-[150px] mb-[150px]'>
+            <CardSwap
+                cardDistance={60}
+                verticalDistance={50}
+                delay={5000}
+                pauseOnHover={false}
+            >
+                <Card>
+                <img src="https://images.unsplash.com/photo-1555949963-aa79dcee981c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=400" alt="Card1" />
+                </Card>
+                <Card>
+                <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=400" alt="Card2" />
+                </Card>
+                <Card>
+                <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=400" alt="Card3" />
+                </Card>
+            </CardSwap>
+          </div>
+        </div>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projectsData.map((project) => (
             <div 
