@@ -40,7 +40,7 @@ export default function Navbar() {
           onClick={() => scrollToSection('home')}
           className="text-xl font-bold text-accent font-mono hover:scale-105 transition-transform"
         >
-          JD
+          Rivan Meinaki
         </button>
         
         <div className="hidden md:flex space-x-8">

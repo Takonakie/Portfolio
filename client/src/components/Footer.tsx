@@ -3,7 +3,7 @@ export default function Footer() {
     <footer className="bg-primary border-t border-border py-8">
       <div className="container mx-auto px-6 text-center">
         <p className="text-muted">
-          © 2024 John Doe. All rights reserved. Built with React & GSAP.
+          © 2025 Rivan Meinaki. All rights reserved. Built with React & GSAP.
         </p>
       </div>
     </footer>

@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import profileImage from '../assets/profile.jpg';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -78,7 +79,7 @@ export default function About() {
             </div>
             <div className="about-image opacity-0">
               <img 
-                src="/assets/profile.jpg" 
+                src={profileImage}
                 alt="John Doe - Full Stack Developer" 
                 className="rounded-2xl shadow-2xl w-full h-auto transform hover:scale-105 transition-transform duration-300" 
               />

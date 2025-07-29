@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { Mail, Phone, MapPin, Github, Linkedin, Twitter } from 'lucide-react';
+import { Mail, Phone, MapPin, Github, Linkedin, Instagram } from 'lucide-react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
@@ -133,20 +133,20 @@ export default function Contact() {
               <div className="space-y-4">
                 <div className="flex items-center">
                   <Mail className="text-accent text-xl w-8" />
-                  <span className="ml-4 text-lg">john.doe@email.com</span>
+                  <span className="ml-4 text-lg">rivanmeinaki0730@gmail.com</span>
                 </div>
                 <div className="flex items-center">
                   <Phone className="text-accent text-xl w-8" />
-                  <span className="ml-4 text-lg">+1 (555) 123-4567</span>
+                  <span className="ml-4 text-lg">+62 887-4793-6906</span>
                 </div>
                 <div className="flex items-center">
                   <MapPin className="text-accent text-xl w-8" />
-                  <span className="ml-4 text-lg">San Francisco, CA</span>
+                  <span className="ml-4 text-lg">North Cikarang, West Java</span>
                 </div>
               </div>
               <div className="flex space-x-6 mt-8">
                 <a 
-                  href="https://linkedin.com/in/johndoe"
+                  href="https://www.linkedin.com/in/rivan-meinaki/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="social-link text-accent hover:text-accent/80 transition-colors duration-300 transform hover:scale-110"
@@ -154,7 +154,7 @@ export default function Contact() {
                   <Linkedin size={24} />
                 </a>
                 <a 
-                  href="https://github.com/johndoe"
+                  href="https://github.com/Takonakie"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="social-link text-accent hover:text-accent/80 transition-colors duration-300 transform hover:scale-110"
@@ -162,12 +162,12 @@ export default function Contact() {
                   <Github size={24} />
                 </a>
                 <a 
-                  href="https://twitter.com/johndoe"
+                  href="https://instagram.com/rivanmeinaki"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="social-link text-accent hover:text-accent/80 transition-colors duration-300 transform hover:scale-110"
                 >
-                  <Twitter size={24} />
+                  <Instagram size={24} />
                 </a>
               </div>
             </div>

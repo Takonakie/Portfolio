@@ -7,33 +7,33 @@ gsap.registerPlugin(ScrollTrigger);
 
 const experienceData = [
   {
-    title: 'Senior Full Stack Developer',
-    company: 'TechCorp Solutions Inc.',
-    period: '2022 - Present',
+    title: 'Vice Head of Sport, Passion, & Talent',
+    company: 'PUMA Informatics',
+    period: '2024 - Present',
     description: [
-      'Led development of 5+ full-stack applications using React, Node.js, and MongoDB',
-      'Mentored junior developers and established code review processes',
-      'Implemented CI/CD pipelines improving deployment efficiency by 40%'
+      "Coordinated and organized various sports events and competitions for Informatics students.",
+      "Identified and nurtured student talent in non-academic fields.",
+      "Responsible for team formation and participation in external competitions."
     ]
   },
   {
-    title: 'Full Stack Developer',
-    company: 'StartupXYZ',
-    period: '2020 - 2022',
+    title: 'Vice Head of Sport & Art',
+    company: 'KMB Ashokavardhana',
+    period: '2024 - Present',
     description: [
-      'Developed responsive web applications using React and Express.js',
-      'Collaborated with design team to implement pixel-perfect UI components',
-      'Optimized application performance resulting in 60% faster load times'
+      "Designed and executed sports and arts programs for organization members.",
+      "Fostered member participation in creative and athletic activities to build camaraderie.",
+      "Managed logistics and schedules for routine practices and special events."
     ]
   },
   {
-    title: 'Frontend Developer',
-    company: 'WebDev Agency',
-    period: '2019 - 2020',
+    title: 'Head of Public Relations',
+    company: 'PUBA',
+    period: '2024 - Present',
     description: [
-      'Built modern, responsive websites using HTML5, CSS3, and JavaScript',
-      'Implemented interactive animations and micro-interactions',
-      'Maintained cross-browser compatibility and accessibility standards'
+      "Managed the organization's public image and communications across social media and other channels.",
+      "Built and maintained relationships with other student organizations, sponsors, and media partners.",
+      "Created and distributed promotional materials such as posters, press releases, and digital content."
     ]
   }
 ];
@@ -78,7 +78,7 @@ export default function Experience() {
     <section id="experience" className="py-20 bg-primary">
       <div className="container mx-auto px-6">
         <h2 className="experience-title text-4xl md:text-5xl font-bold text-center mb-16 opacity-0">
-          Work <span className="text-accent">Experience</span>
+          Organizational <span className="text-accent">Experience</span>
         </h2>
         <div className="max-w-4xl mx-auto">
           <div className="relative">

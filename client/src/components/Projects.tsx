@@ -1,125 +1,130 @@
 import { useEffect, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { Github, ExternalLink } from 'lucide-react';
+import { Github, ExternalLink, Download } from 'lucide-react';
 import ProjectModal from './ProjectModal';
 import CardSwap, { Card } from './CardSwap';
+import bitlyImage from '../assets/bitly1.png';
+import bandditImage from '../assets/banddit1.png';
+import lunarAIImage from '../assets/lunarAI1.png';
+import autoAttendanceImage from '../assets/autoAttendance.png';
+import sonaImage from '../assets/sona.jpg';
+import safeImage from '../assets/safe.png';
 
 gsap.registerPlugin(ScrollTrigger);
 
 const projectsData = [
   {
     id: 1,
-    title: 'E-commerce Platform',
-    description: 'Full-stack e-commerce solution with React, Node.js, and Stripe integration. Features include user authentication, product management, and payment processing.',
-    image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=400',
-    technologies: ['React', 'Node.js', 'MongoDB', 'Stripe'],
-    github: 'https://github.com/johndoe/ecommerce-platform',
-    demo: 'https://ecommerce-demo.com',
-    detailedDescription: 'A comprehensive e-commerce platform built with modern web technologies. Features include user authentication, product catalog, shopping cart, payment processing with Stripe, order management, and admin dashboard.',
+    title: 'Bitly | Food Recognition & Calorie Estimation',
+    description: 'A web application that identifies food items from an image using a YOLOv8 object detection model and estimates the total calorie count.',
+    image: bitlyImage,
+    technologies: ['YOLOv8', 'JavaScript', 'Flask', 'Figma', 'OpenAI API'],
+    github: 'https://github.com/Takonakie/Bitly-Food-Recognition',
+    documentation: '/BootcampReport_Artificial Intelligence_Rivan Meinaki_LapisAI.pdf',
+    detailedDescription: 'This project leverages a YOLOv8 machine learning model trained to recognize various food items, integrated into a user-friendly web interface. The backend, built with Flask, processes uploaded images, runs the detection model to identify food, and then calculates the estimated calories for the identified items. The frontend, designed in Figma and built with JavaScript, allows users to easily upload an image and view the nutritional analysis.',
     features: [
-      'User authentication and authorization',
-      'Product catalog with search and filtering',
-      'Shopping cart and checkout process',
-      'Payment processing with Stripe',
-      'Order management system',
-      'Admin dashboard for product management',
-      'Responsive design for mobile and desktop'
+      'Image-based food recognition using a YOLOv8 model',
+      'Detection of multiple food items in a single image',
+      'Automatic calorie estimation for recognized foods',
+      'Interactive user interface for image uploads',
+      'A detailed breakdown of detected foods and their calorie counts',
+      'Backend processing powered by a Flask server',
+      'UI/UX designed in Figma for a clean user experience'
     ]
   },
   {
     id: 2,
-    title: 'Task Management App',
-    description: 'Collaborative task management application with real-time updates, drag-and-drop functionality, and team collaboration features.',
-    image: 'https://images.unsplash.com/photo-1611224923853-80b023f02d71?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=400',
-    technologies: ['React', 'TypeScript', 'Socket.io', 'PostgreSQL'],
-    github: 'https://github.com/johndoe/task-manager',
-    demo: 'https://taskmanager-demo.com',
-    detailedDescription: 'A collaborative task management application designed for teams. Built with React and TypeScript for the frontend, Node.js for the backend, and PostgreSQL for data storage.',
+    title: 'Banddit | Communication Forum',
+    description: 'A modern, Reddit-style community forum built with React, TypeScript, Express.js, and MongoDB, featuring a dark theme interface with rich user interactions.',
+    image: bandditImage,
+    technologies: ['React', 'TypeScript', 'Express.js', 'MongoDB', 'Redux Toolkit', 'Tailwind CSS'],
+    github: 'https://github.com/Takonakie/Banddit-Forum.git',
+    detailedDescription: 'A full-stack community forum application designed for user interaction. Built with React and TypeScript for the frontend, Node.js with Express for the backend, and MongoDB for data storage. ',
     features: [
-      'Real-time collaboration with Socket.io',
-      'Drag-and-drop task management',
-      'Team workspace management',
-      'Task assignment and tracking',
-      'Project timeline visualization',
-      'Notification system',
-      'File attachments and comments'
+      "Secure JWT-based user authentication",
+      "Post management (Create, Read, Update, Delete)",
+      "Comment system with full CRUD functionality and threaded display",
+      "Voting system for posts and comments",
+      "Modern and responsive dark theme UI",
+      "Real-time updates for post and comment interactions",
+      "Input validation and authorization"
     ]
   },
   {
     id: 3,
-    title: 'Analytics Dashboard',
-    description: 'Advanced analytics dashboard with interactive charts, real-time data visualization, and customizable reporting features.',
-    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=400',
-    technologies: ['React', 'D3.js', 'Python', 'Redis'],
-    github: 'https://github.com/johndoe/analytics-dashboard',
-    demo: 'https://analytics-demo.com',
-    detailedDescription: 'A comprehensive analytics dashboard for data visualization and reporting. Features interactive charts, real-time data updates, and customizable dashboards.',
+    title: 'Lunar AI',
+    description: 'A multifunctional Android AI assistant application featuring a chatbot, camera-based object recognition, a step tracker, and biometric login features.',
+    image: lunarAIImage,
+    technologies: ["Android (Java)", "ML Kit", "PHP", "OpenAI API"],
+    github: 'https://github.com/Takonakie/LUNAR-AI.git',
+    detailedDescription: 'A comprehensive AI assistant for Android, featuring an interactive chatbot interface, real-time image labeling using ML Kit, and fitness functionalities like a step counter. The backend is handled by PHP for user authentication.',
     features: [
-      'Interactive data visualizations with D3.js',
-      'Real-time data streaming',
-      'Customizable dashboard layouts',
-      'Export and sharing capabilities',
-      'Multi-tenant support',
-      'API integration for data sources',
-      'Mobile-responsive design'
+      "AI Chatbot with external API integration",
+      "Object recognition and image labeling using the device camera",
+      "Biometric authentication (fingerprint) for secure login",
+      "Step counter and fitness tracking functionality",
+      "Map integration for getting directions",
+      "User authentication system (login/registration) with a PHP backend",
+      "Shake detection to trigger notifications"
     ]
   },
   {
     id: 4,
-    title: 'Real-time Chat App',
-    description: 'Modern chat application with real-time messaging, file sharing, group chats, and end-to-end encryption.',
-    image: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=400',
-    technologies: ['React Native', 'Socket.io', 'Firebase', 'Express'],
-    github: 'https://github.com/johndoe/chat-app',
-    demo: 'https://chat-demo.com',
-    detailedDescription: 'A modern real-time chat application built with React Native for cross-platform mobile support. Features include real-time messaging, file sharing, and group chats.',
+    title: 'Automated Attendance System using Computer Vision',
+    description: 'An AI-powered system that automates student attendance using real-time face recognition, with added age and gender prediction.',
+    image: autoAttendanceImage,
+    technologies: ['OpenCV', 'TensorFlow', 'Keras', 'MediaPipe', 'FaceNet', 'NumPy', 'Pandas'],
+    github: 'https://github.com/haysnairpa/cv-auto-attendance.git',
+    documentation: '/Report Group 5 Mini-Project.pdf',
+    detailedDescription: 'This project addresses the inefficiencies of traditional attendance methods by implementing an AI-powered face recognition system. It provides a contactless, efficient, and fraud-resistant solution to automate student attendance, prevent proxy attendance, and minimize human error. The system also predicts age and gender, offering valuable downloadgraphic insights for educational institutions.',
     features: [
-      'Real-time messaging with Socket.io',
-      'File and image sharing',
-      'Group chat functionality',
-      'Push notifications',
-      'Message encryption',
-      'User presence indicators',
-      'Cross-platform mobile support'
+      'Automated attendance via real-time face recognition',
+      'Student age and gender prediction',
+      'Secure facial data capture and registration',
+      'Generates timestamped attendance records (CSV)',
+      'Fraud-resistant to prevent proxy attendance',
+      'Identifies and labels unknown individuals',
+      'Contactless and hygienic operation'
     ]
   },
   {
     id: 5,
-    title: 'AI Content Generator',
-    description: 'AI-powered content generation tool with natural language processing, template customization, and multi-format output support.',
-    image: 'https://images.unsplash.com/photo-1555949963-aa79dcee981c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=400',
-    technologies: ['Python', 'TensorFlow', 'FastAPI', 'OpenAI'],
-    github: 'https://github.com/johndoe/ai-content-generator',
-    demo: 'https://ai-content-demo.com',
-    detailedDescription: 'An AI-powered content generation tool that leverages natural language processing to create high-quality content. Built with Python, TensorFlow, and OpenAI API.',
+    title: 'SONA | Digital Image Processing',
+    description: 'A comprehensive digital image processing application built with Python and Flet, offering a wide range of tools for image manipulation and analysis.',
+    image: sonaImage,
+    technologies: ["Python", "Flet", "OpenCV", "Pillow", "NumPy"],
+    github: 'https://github.com/haysnairpa/image_processing_project.git',
+    documentation: '/Image Processing and Recognition group 7 task.pdf',
+    detailedDescription: 'SONA is a powerful and user-friendly desktop application for digital image processing. Built with Python and the Flet framework, it provides an interactive interface for users to perform a variety of operations, from basic photo editing and filtering to more complex tasks like image stitching, background removal, and mathematical transformations. The project leverages core libraries such as OpenCV and Pillow for robust image manipulation capabilities.',
     features: [
-      'AI-powered content generation',
-      'Multiple content formats support',
-      'Template customization',
-      'Batch processing capabilities',
-      'API integration with OpenAI',
-      'Content quality scoring',
-      'Export in multiple formats'
+      "Comprehensive Photo Editor with crop, rotate, scale, and flip functionalities",
+      "Advanced Color and Tone Adjustments including brightness, contrast, and gamma correction",
+      "A wide variety of image filters, such as Gaussian, Median, Sobel, and Canny edge detection",
+      "Image Enhancement techniques like Histogram Equalization and Contrast Stretching",
+      "Mathematical Operations on images including addition, subtraction, and bitwise logic (AND, OR, XOR)",
+      "Photo Stitching to seamlessly create panoramic images",
+      "Intelligent Background Removal using Thresholding and KMeans clustering",
+      "Image Compression using Run-Length Encoding (RLE) and Discrete Cosine Transform (DCT)",
+      "Morphological transformations like dilation, erosion, opening, and closing"
     ]
   },
   {
     id: 6,
-    title: 'DevOps Pipeline',
-    description: 'Automated CI/CD pipeline with Docker containerization, Kubernetes orchestration, and monitoring dashboard.',
-    image: 'https://images.unsplash.com/photo-1518186285589-2f7649de83e0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=400',
-    technologies: ['Docker', 'Kubernetes', 'Jenkins', 'AWS'],
-    github: 'https://github.com/johndoe/devops-pipeline',
-    demo: 'https://devops-demo.com',
-    detailedDescription: 'A complete DevOps pipeline solution with automated testing, building, and deployment. Features Docker containerization, Kubernetes orchestration, and comprehensive monitoring.',
+    title: 'SAFE | Fall Detection System for Elderly',
+    description: 'An AI-powered system that detects fall incidents in the elderly in real-time using computer vision and sends emergency alerts.',
+    image: safeImage,
+    technologies: ["Elice ML API", "React.js", "Express.js", "AWS", "YOLOv8", "Twilio"],
+    github: '',
+    documentation: '',
+    detailedDescription: 'SAFE is an intelligent monitoring system designed to enhance the safety of elderly individuals living independently. Using real-time video analysis, the system can accurately identify fall incidents and automatically send an alert to an admin dashboard. An admin can then verify the event and trigger an automated phone call or SMS to a registered caregiver, ensuring that emergency assistance is dispatched promptly.',
     features: [
-      'Automated CI/CD with Jenkins',
-      'Docker containerization',
-      'Kubernetes orchestration',
-      'Infrastructure as Code',
-      'Monitoring and logging',
-      'Automated testing pipelines',
-      'Multi-environment deployments'
+      "Real-time fall detection using AI and Computer Vision.",
+      "Instant emergency notifications to an admin dashboard.",
+      "Automated emergency calls to caregivers via API integration (e.g., Twilio).",
+      "Registration and profile management system for the elderly and caregivers.",
+      "Graph visualization of elderly's daily vital.",
+      "High accuracy to minimize false alarms."
     ]
   }
 ];
@@ -182,13 +187,13 @@ export default function Projects() {
                 pauseOnHover={false}
             >
                 <Card>
-                <img src="https://images.unsplash.com/photo-1555949963-aa79dcee981c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=400" alt="Card1" />
+                <img src={bitlyImage} alt="Card1" />
                 </Card>
                 <Card>
-                <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=400" alt="Card2" />
+                <img src={bandditImage} alt="Card2" />
                 </Card>
                 <Card>
-                <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=400" alt="Card3" />
+                <img src={lunarAIImage} alt="Card3" />
                 </Card>
             </CardSwap>
           </div>
@@ -229,13 +234,14 @@ export default function Projects() {
                     <Github size={20} />
                   </a>
                   <a 
-                    href={project.demo}
+                    href={project.documentation}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-accent hover:text-accent/80 transition-colors duration-300"
                     onClick={(e) => e.stopPropagation()}
+                    {...(project.id >= 1 && project.id <= 6 && { documentation: true })}
                   >
-                    <ExternalLink size={20} />
+                    {project.id >= 1 && project.id <= 6 ? <Download size={20} /> : <ExternalLink size={20} />}
                   </a>
                 </div>
               </div>

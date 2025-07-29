@@ -5,39 +5,43 @@ import {
   Code, 
   Database, 
   Server, 
-  Palette, 
+  Palette,
+  Atom, 
   GitBranch, 
   Container,
   Cloud,
   Zap,
   Figma,
+  BrainCircuit,
   Terminal
 } from 'lucide-react';
 
 gsap.registerPlugin(ScrollTrigger);
 
 const skillsData = {
-  frontend: [
-    { name: 'React.js', percentage: 90 },
-    { name: 'TypeScript', percentage: 85 },
-    { name: 'Tailwind CSS', percentage: 95 },
-    { name: 'GSAP', percentage: 80 }
+  machinelearning: [
+    { name: 'Python', percentage: 90 },
+    { name: 'Computer Vision', percentage: 85 },
+    { name: 'Data Analysis', percentage: 95 },
+    { name: 'Natural Language Processing', percentage: 80 },
+    { name: 'Deep Learning', percentage: 80 }
   ],
-  backend: [
-    { name: 'Node.js', percentage: 88 },
-    { name: 'Python', percentage: 82 },
-    { name: 'MongoDB', percentage: 85 },
-    { name: 'PostgreSQL', percentage: 78 }
+  webdeveloper: [
+    { name: 'React.js', percentage: 88 },
+    { name: 'Express.js', percentage: 82 },
+    { name: 'JavaScript', percentage: 85 },
+    { name: 'MySQL', percentage: 78 },
+    { name: 'MongoDB', percentage: 78 }
   ]
 };
 
 const tools = [
-  { name: 'Git', icon: GitBranch },
+  { name: 'React.js', icon: Atom },
+  { name: 'Tensorflow', icon: BrainCircuit },
   { name: 'Docker', icon: Container },
   { name: 'AWS', icon: Cloud },
-  { name: 'Firebase', icon: Zap },
-  { name: 'Figma', icon: Figma },
-  { name: 'VS Code', icon: Terminal }
+  { name: 'Git & GitHub', icon: GitBranch },
+  { name: 'VS Code', icon: Code }
 ];
 
 export default function Skills() {
@@ -140,11 +144,11 @@ export default function Skills() {
         </h2>
         <div className="max-w-4xl mx-auto">
           <div className="grid md:grid-cols-2 gap-8">
-            {/* Frontend Skills */}
+            {/* Machine Learning Skills */}
             <div className="skill-category opacity-0">
-              <h3 className="text-2xl font-semibold mb-6 text-accent">Frontend</h3>
+              <h3 className="text-2xl font-semibold mb-6 text-accent">Machine Learning</h3>
               <div className="space-y-4">
-                {skillsData.frontend.map((skill, index) => (
+                {skillsData.machinelearning.map((skill, index) => (
                   <div key={index} className="skill-item">
                     <div className="flex justify-between mb-2">
                       <span className="font-medium">{skill.name}</span>
@@ -162,11 +166,11 @@ export default function Skills() {
               </div>
             </div>
 
-            {/* Backend Skills */}
+            {/* Web Developer Skills */}
             <div className="skill-category opacity-0">
-              <h3 className="text-2xl font-semibold mb-6 text-accent">Backend</h3>
+              <h3 className="text-2xl font-semibold mb-6 text-accent">Web Developer</h3>
               <div className="space-y-4">
-                {skillsData.backend.map((skill, index) => (
+                {skillsData.webdeveloper.map((skill, index) => (
                   <div key={index} className="skill-item">
                     <div className="flex justify-between mb-2">
                       <span className="font-medium">{skill.name}</span>
