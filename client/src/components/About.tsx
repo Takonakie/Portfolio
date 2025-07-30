@@ -80,7 +80,7 @@ export default function About() {
             <div className="about-image opacity-0">
               <img 
                 src={profileImage}
-                alt="John Doe - Full Stack Developer" 
+                alt="Rivan Meinaki - Full Stack Developer" 
                 className="rounded-2xl shadow-2xl w-full h-auto transform hover:scale-105 transition-transform duration-300" 
               />
             </div>

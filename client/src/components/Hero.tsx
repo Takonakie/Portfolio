@@ -39,7 +39,7 @@ export default function Hero() {
             Hi, I'm <span className="text-accent">Rivan Meinaki</span>
           </h1>
           <p className="hero-subtitle text-xl md:text-2xl text-muted mb-8 opacity-0 font-mono">
-            Machine Learning Engineer & Web Developer
+            Software Developer & Machine Learning Engineer
           </p>
           <div className="hero-buttons flex flex-col sm:flex-row gap-4 justify-center items-center opacity-0">
             <button
