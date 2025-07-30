@@ -66,10 +66,10 @@ export default function About() {
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="about-text opacity-0">
               <p className="text-lg text-muted mb-6 leading-relaxed">
-                I'm a passionate Full Stack Developer with 5+ years of experience creating digital experiences that make a difference. I specialize in building scalable web applications using modern technologies like React, Node.js, and Python.
+                As a Software Developer & Machine Learning Engineer , I am passionate about building innovative and impactful solutions. 
               </p>
               <p className="text-lg text-muted mb-6 leading-relaxed">
-                When I'm not coding, you'll find me exploring new technologies, contributing to open-source projects, or sharing my knowledge through technical writing and mentoring.
+                Driven by a curiosity for new technologies, I excel at solving complex challenges and thrive in fast-paced, deadline-driven environments.
               </p>
               <div className="flex flex-wrap gap-4">
                 <span className="px-4 py-2 bg-accent/20 text-accent rounded-lg font-mono text-sm">Problem Solver</span>
