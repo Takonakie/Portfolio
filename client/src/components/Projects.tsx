@@ -40,6 +40,7 @@ const projectsData = [
     image: bandditImage,
     technologies: ['React', 'TypeScript', 'Express.js', 'MongoDB', 'Redux Toolkit', 'Tailwind CSS'],
     github: 'https://github.com/Takonakie/Banddit-Forum.git',
+    documentation: 'null',
     detailedDescription: 'A full-stack community forum application designed for user interaction. Built with React and TypeScript for the frontend, Node.js with Express for the backend, and MongoDB for data storage. ',
     features: [
       "Secure JWT-based user authentication",
@@ -58,6 +59,7 @@ const projectsData = [
     image: lunarAIImage,
     technologies: ["Android (Java)", "ML Kit", "PHP", "OpenAI API"],
     github: 'https://github.com/Takonakie/LUNAR-AI.git',
+    documentation: 'null',
     detailedDescription: 'A comprehensive AI assistant for Android, featuring an interactive chatbot interface, real-time image labeling using ML Kit, and fitness functionalities like a step counter. The backend is handled by PHP for user authentication.',
     features: [
       "AI Chatbot with external API integration",
@@ -116,7 +118,7 @@ const projectsData = [
     image: safeImage,
     technologies: ["Elice ML API", "React.js", "Express.js", "AWS", "YOLOv8", "Twilio"],
     github: '',
-    documentation: '',
+    documentation: 'null',
     detailedDescription: 'SAFE is an intelligent monitoring system designed to enhance the safety of elderly individuals living independently. Using real-time video analysis, the system can accurately identify fall incidents and automatically send an alert to an admin dashboard. An admin can then verify the event and trigger an automated phone call or SMS to a registered caregiver, ensuring that emergency assistance is dispatched promptly.',
     features: [
       "Real-time fall detection using AI and Computer Vision.",
@@ -233,15 +235,14 @@ export default function Projects() {
                   >
                     <Github size={20} />
                   </a>
-                  <a 
+                  <a
                     href={project.documentation}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    download // <-- Solusinya
                     className="text-accent hover:text-accent/80 transition-colors duration-300"
                     onClick={(e) => e.stopPropagation()}
-                    {...(project.id >= 1 && project.id <= 6 && { documentation: true })}
                   >
-                    {project.id >= 1 && project.id <= 6 ? <Download size={20} /> : <ExternalLink size={20} />}
+                    {/* Logika untuk menampilkan ikon bisa tetap sama */}
+                    {project.documentation ? <Download size={20} /> : <ExternalLink size={20} />}
                   </a>
                 </div>
               </div>

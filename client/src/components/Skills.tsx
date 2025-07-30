@@ -21,17 +21,17 @@ gsap.registerPlugin(ScrollTrigger);
 const skillsData = {
   machinelearning: [
     { name: 'Python', percentage: 90 },
-    { name: 'Computer Vision', percentage: 85 },
-    { name: 'Data Analysis', percentage: 95 },
+    { name: 'Computer Vision', percentage: 88 },
+    { name: 'Data Analysis', percentage: 86 },
     { name: 'Natural Language Processing', percentage: 80 },
-    { name: 'Deep Learning', percentage: 80 }
+    { name: 'Deep Learning', percentage: 77 }
   ],
   webdeveloper: [
-    { name: 'React.js', percentage: 88 },
-    { name: 'Express.js', percentage: 82 },
-    { name: 'JavaScript', percentage: 85 },
-    { name: 'MySQL', percentage: 78 },
-    { name: 'MongoDB', percentage: 78 }
+    { name: 'React.js', percentage: 84 },
+    { name: 'Express.js', percentage: 80 },
+    { name: 'JavaScript', percentage: 86 },
+    { name: 'MySQL', percentage: 85 },
+    { name: 'MongoDB', percentage: 83 }
   ]
 };
 
