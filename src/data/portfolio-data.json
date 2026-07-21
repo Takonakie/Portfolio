@@ -7,13 +7,13 @@
     "tagline": "I build LLM-powered products & intelligent agents",
     "about": "AI Engineer specializing in large language models, retrieval systems, and autonomous agents. I turn research papers into production systems — and I do it with style.",
     "photoUrl": "/avatar.png",
-    "yearsExperience": "2+",
-    "projectsShipped": "10+"
+    "yearsExperience": "1+",
+    "projectsShipped": "5+"
   },
   "contact": {
-    "email": "sadvan945@gmail.com",
-    "github": "https://github.com/yourusername",
-    "linkedin": "https://linkedin.com/in/yourusername",
+    "email": "rivanmeinaki0730@gmail.com",
+    "github": "https://github.com/takonakie",
+    "linkedin": "https://linkedin.com/in/rivan-meinaki",
     "contactHeading": "Let's build the next arc together!",
     "contactSubtext": "Open to AI engineering roles, collabs, and interesting problems."
   },
@@ -21,7 +21,8 @@
     "LLM Applications",
     "RAG Systems",
     "AI Agents",
-    "Computer Vision"
+    "Computer Vision",
+    "Machine Learning"
   ],
   "tickerItems": [
     "AI ENGINEER",
@@ -121,16 +122,22 @@
   ],
   "experience": [
     {
-      "role": "AI Engineer",
-      "company": "TechCorp Inc.",
-      "period": "2024 — Now",
+      "role": "AI Engineer Intern",
+      "company": "PT Salam Pacific Indonesia Lines",
+      "period": "2026 — 2026",
       "desc": "Shipping LLM features used by 100k+ users. Built internal RAG platform and eval framework."
     },
     {
-      "role": "ML Engineer Intern",
-      "company": "StartupXYZ",
-      "period": "2023 — 2024",
+      "role": "IT Storage & Observability Intern",
+      "company": "PT Surya Citra Media, Tbk",
+      "period": "2025 — 2025",
       "desc": "Built recommendation models and data pipelines. Reduced inference latency by 60%."
+    },
+    {
+      "role": "AI Engineer",
+      "company": "LapisAI",
+      "period": "2025 — 2025",
+      "desc": "Responsibilities and achievements."
     }
   ],
   "theme": {
