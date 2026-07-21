@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { usePortfolioData, PortfolioDataType, ThemeColors } from "../hooks/usePortfolioData";
+import { usePortfolioData } from "../hooks/usePortfolioData";
+import type { PortfolioDataType, ThemeColors } from "../hooks/usePortfolioData";
 import { useAuth } from "../hooks/useAuth";
 import { savePortfolioData, uploadPhoto } from "../utils/api";
 

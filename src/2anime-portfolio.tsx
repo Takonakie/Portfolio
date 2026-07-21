@@ -1,4 +1,5 @@
-import { useState, useEffect, useRef, ReactNode, CSSProperties } from "react";
+import { useState, useEffect, useRef } from "react";
+import type { ReactNode, CSSProperties } from "react";
 import { usePortfolioData } from "./hooks/usePortfolioData";
 
 interface RevealProps {
