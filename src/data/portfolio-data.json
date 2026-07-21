@@ -1,12 +1,12 @@
 {
   "profile": {
-    "name": "RIVAN",
-    "nameJp": "リヴァン",
+    "name": "RIVAN MEINAKI",
+    "nameJp": "",
     "title": "AI ENGINEER",
-    "titleJp": "AIエンジニア",
+    "titleJp": "",
     "tagline": "I build LLM-powered products & intelligent agents",
     "about": "AI Engineer specializing in large language models, retrieval systems, and autonomous agents. I turn research papers into production systems — and I do it with style.",
-    "photoUrl": "",
+    "photoUrl": "/avatar.png",
     "yearsExperience": "2+",
     "projectsShipped": "10+"
   },
