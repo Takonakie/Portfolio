@@ -1,0 +1,155 @@
+{
+  "profile": {
+    "name": "RIVAN",
+    "nameJp": "リヴァン",
+    "title": "AI ENGINEER",
+    "titleJp": "AIエンジニア",
+    "tagline": "I build LLM-powered products & intelligent agents",
+    "about": "AI Engineer specializing in large language models, retrieval systems, and autonomous agents. I turn research papers into production systems — and I do it with style.",
+    "photoUrl": "",
+    "yearsExperience": "2+",
+    "projectsShipped": "10+"
+  },
+  "contact": {
+    "email": "sadvan945@gmail.com",
+    "github": "https://github.com/yourusername",
+    "linkedin": "https://linkedin.com/in/yourusername",
+    "contactHeading": "Let's build the next arc together!",
+    "contactSubtext": "Open to AI engineering roles, collabs, and interesting problems."
+  },
+  "typingWords": [
+    "LLM Applications",
+    "RAG Systems",
+    "AI Agents",
+    "Computer Vision"
+  ],
+  "tickerItems": [
+    "AI ENGINEER",
+    "★",
+    "リヴァン",
+    "★",
+    "TAKE YOUR TIME",
+    "★",
+    "LLM × AGENTS × VISION",
+    "★",
+    "全力疾走",
+    "★"
+  ],
+  "skills": [
+    {
+      "group": "ML & DL",
+      "jp": "機械学習",
+      "items": [
+        "PyTorch",
+        "TensorFlow",
+        "Scikit-learn",
+        "Hugging Face"
+      ]
+    },
+    {
+      "group": "LLM Stack",
+      "jp": "大規模言語モデル",
+      "items": [
+        "LangChain",
+        "RAG",
+        "Fine-tuning",
+        "Vector DBs",
+        "Prompt Eng."
+      ]
+    },
+    {
+      "group": "Engineering",
+      "jp": "エンジニアリング",
+      "items": [
+        "Python",
+        "FastAPI",
+        "Docker",
+        "AWS",
+        "PostgreSQL"
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "title": "Sensei-GPT",
+      "jp": "第一話",
+      "desc": "RAG-powered study assistant that answers questions from 10k+ documents with cited sources. 92% answer accuracy on eval set.",
+      "tags": [
+        "LangChain",
+        "Pinecone",
+        "FastAPI"
+      ],
+      "link": "#",
+      "sfx": "ドン!"
+    },
+    {
+      "title": "Mecha-Vision",
+      "jp": "第二話",
+      "desc": "Real-time object detection pipeline for factory QA. YOLOv8 fine-tuned on custom dataset, deployed at 45 FPS on edge devices.",
+      "tags": [
+        "YOLOv8",
+        "ONNX",
+        "Edge AI"
+      ],
+      "link": "#",
+      "sfx": "バン!"
+    },
+    {
+      "title": "Agent-Zero",
+      "jp": "第三話",
+      "desc": "Multi-agent workflow system that automates research reports — planner, retriever, and writer agents collaborating via tool calls.",
+      "tags": [
+        "Agents",
+        "OpenAI",
+        "Redis"
+      ],
+      "link": "#",
+      "sfx": "ゴゴゴ"
+    },
+    {
+      "title": "Waifu-Diffusion Lab",
+      "jp": "第四話",
+      "desc": "Fine-tuned Stable Diffusion with LoRA for consistent character generation. Custom training pipeline + Gradio demo app.",
+      "tags": [
+        "Diffusion",
+        "LoRA",
+        "Gradio"
+      ],
+      "link": "#",
+      "sfx": "キラ✦"
+    }
+  ],
+  "experience": [
+    {
+      "role": "AI Engineer",
+      "company": "TechCorp Inc.",
+      "period": "2024 — Now",
+      "desc": "Shipping LLM features used by 100k+ users. Built internal RAG platform and eval framework."
+    },
+    {
+      "role": "ML Engineer Intern",
+      "company": "StartupXYZ",
+      "period": "2023 — 2024",
+      "desc": "Built recommendation models and data pipelines. Reduced inference latency by 60%."
+    }
+  ],
+  "theme": {
+    "preset": "default",
+    "colors": {
+      "primary": "#ec4899",
+      "primaryText": "#000000",
+      "background": "#09090b",
+      "surface": "#18181b",
+      "text": "#ffffff",
+      "textMuted": "#a1a1aa",
+      "border": "#000000",
+      "cardBg": "#ffffff",
+      "cardText": "#000000",
+      "accentSecondary": "#22d3ee"
+    }
+  },
+  "auth": {
+    "username": "takonakie",
+    "passwordHash": "573b0fcfeeeacfb4dc5ebfe0a8fcab2ddf2719c8f00192e2fb0e8f2efc4d9bc8"
+  }
+}
