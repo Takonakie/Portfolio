@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
-import AnimePortfolio from "./2anime-portfolio";
+import AnimePortfolio from "./anime-portfolio";
 import AdminDashboard from "./components/AdminDashboard";
 import LoginModal from "./components/LoginModal";
 import { PortfolioDataProvider } from "./hooks/usePortfolioData";

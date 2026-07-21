@@ -318,7 +318,7 @@ export default function AnimePortfolio({ onTriggerLogin }: AnimePortfolioProps) 
         <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
           <div className="flex items-center gap-2 select-none cursor-pointer" onClick={handleBadgeClick}>
             <span
-              className="font-black px-2 py-1 text-lg transition-transform hover:scale-105"
+              className="font-black px-3 py-1 text-lg transition-transform hover:scale-105"
               style={{
                 backgroundColor: "var(--c-primary, #ec4899)",
                 color: "var(--c-primary-text, #000000)",
@@ -401,7 +401,7 @@ export default function AnimePortfolio({ onTriggerLogin }: AnimePortfolioProps) 
         </div>
 
         {/* Avatar image container */}
-        <div className="absolute bottom-0 right-0 hidden lg:flex items-end">
+        <div className="absolute bottom-24 right-0 hidden lg:flex items-end">
           {data.profile.photoUrl ? (
             <img
               src={data.profile.photoUrl}
@@ -581,7 +581,7 @@ export default function AnimePortfolio({ onTriggerLogin }: AnimePortfolioProps) 
         <SectionTitle en="Contact" jp="連絡先" />
         <Reveal>
           <div className="border-4 p-10 relative" style={{ backgroundColor: "var(--c-primary, #ec4899)", color: "var(--c-primary-text, #000000)", borderColor: "var(--c-border, #000000)", ...halftone }}>
-            <div className="absolute -top-6 right-8 bg-black text-pink-500 font-black px-4 py-2 text-2xl rotate-3 select-none">ゴゴゴゴ</div>
+            <div className="absolute -top-6 right-8 bg-black font-black px-4 py-2 text-2xl rotate-3 select-none" style={{ color: "var(--c-primary)" }}>ゴゴゴゴ</div>
             <h3 className="text-3xl sm:text-4xl font-black uppercase mb-3">{data.contact.contactHeading}</h3>
             <p className="font-bold mb-8">{data.contact.contactSubtext}</p>
             <div className="flex flex-wrap gap-4">
