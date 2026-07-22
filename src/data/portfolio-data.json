@@ -78,7 +78,7 @@
       "jp": "",
       "desc": "An automated incident analysis and decision support system built with Python, OpenRouter API for multi-tier LLM reasoning, and ChromaDB for RAG-powered historical case retrieval. Containerized with Docker and managed via Traefik, the platform delivers context-aware operational recommendations and automated incident documentation.",
       "tags": [
-        "Artificial Intelligence",
+        "AI",
         "OpenRouter API",
         "RAG",
         "Docker",
@@ -88,37 +88,42 @@
       "sfx": "ドン!"
     },
     {
-      "title": "Mecha-Vision",
-      "jp": "第二話",
-      "desc": "Real-time object detection pipeline for factory QA. YOLOv8 fine-tuned on custom dataset, deployed at 45 FPS on edge devices.",
+      "title": "n8n RAG Chatbot",
+      "jp": "",
+      "desc": "An advanced RAG chatbot repository featuring a decoupled architecture built with n8n workflows and the Model Context Protocol (MCP), integrated with a search engine for real-time data retrieval and dynamic tool execution.",
       "tags": [
-        "YOLOv8",
-        "ONNX",
-        "Edge AI"
+        "RAG Chatbot",
+        "n8n",
+        "MCP",
+        "Search Engine",
+        "Workflow Automation"
       ],
-      "link": "#",
+      "link": "https://github.com/Takonakie/RAG-Chatbot-using-n8n-MCP-Search-Engine.git",
       "sfx": "バン!"
     },
     {
-      "title": "Agent-Zero",
+      "title": "Stock Analytics Dashboard",
       "jp": "第三話",
-      "desc": "Multi-agent workflow system that automates research reports — planner, retriever, and writer agents collaborating via tool calls.",
+      "desc": "A full-stack stock analytics pipeline and dashboard engineered to track, analyze, and visualize market data. The platform features automated data processing pipelines backed by Supabase and a responsive frontend built using React, TypeScript, Vite, and Tailwind CSS. At its core, the system incorporates robust predictive and analytical models.",
       "tags": [
-        "Agents",
-        "OpenAI",
-        "Redis"
+        "Stock Analytics",
+        "XGBoost",
+        "VADER Sentiment",
+        "React",
+        "Python"
       ],
-      "link": "#",
+      "link": "https://github.com/Takonakie/Stock-Analytics-Dashboard.git",
       "sfx": "ゴゴゴ"
     },
     {
       "title": "Waifu-Diffusion Lab",
       "jp": "第四話",
-      "desc": "Fine-tuned Stable Diffusion with LoRA for consistent character generation. Custom training pipeline + Gradio demo app.",
+      "desc": "This project is an automated room occupancy and people-counting system engineered to run efficiently on edge devices like the Raspberry Pi 4, utilizing standard USB webcams. It combines computer vision, object tracking, local persistence, and a modern web dashboard to monitor indoor room traffic in real time.",
       "tags": [
-        "Diffusion",
-        "LoRA",
-        "Gradio"
+        "People Counting System",
+        "YOLO11",
+        "Raspberry Pi/NCNN",
+        "FastAPI"
       ],
       "link": "#",
       "sfx": "キラ✦"
