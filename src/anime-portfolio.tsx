@@ -610,7 +610,21 @@ export default function AnimePortfolio({ onTriggerLogin }: AnimePortfolioProps) 
                       {e.period}
                     </span>
                   </div>
-                  <p className="font-semibold text-sm whitespace-pre-line" style={{ color: "var(--c-text-muted, #a1a1aa)" }}>{e.desc}</p>
+                  <div className="font-semibold text-sm leading-relaxed space-y-2" style={{ color: "var(--c-text-muted, #a1a1aa)" }}>
+                    {e.desc.split("\n").map((line, lineIdx) => {
+                      const trimmed = line.trim();
+                      if (trimmed.startsWith("•")) {
+                        const content = line.substring(line.indexOf("•") + 1).trim();
+                        return (
+                          <div key={lineIdx} className="flex items-start gap-2">
+                            <span className="shrink-0 select-none">•</span>
+                            <span>{content}</span>
+                          </div>
+                        );
+                      }
+                      return <div key={lineIdx}>{line}</div>;
+                    })}
+                  </div>
                 </div>
               </div>
             </Reveal>

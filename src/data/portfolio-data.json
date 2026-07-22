@@ -23,7 +23,6 @@
     "AI Agents",
     "Computer Vision",
     "Machine Learning",
-    "Software Developer",
     "Data Scientist"
   ],
   "tickerItems": [
@@ -36,8 +35,6 @@
     "LLM × AGENTS × VISION",
     "★",
     "人工知能",
-    "★",
-    "SOFTWARE DEVELOPER",
     "★",
     "DATA SCIENTIST"
   ],
@@ -160,7 +157,7 @@
       "role": "AI Engineer Intern",
       "company": "LapisAI",
       "period": "2025 — 2025",
-      "desc": "• Developed machine learning programs focused on automated food detection and calorie estimation.  • Built and refined image classification methods to recognize various food types.  \n• Integrated third-party AI interfaces like the OpenAI API to generate precise calorie estimations and enhance user engagement. "
+      "desc": "• Developed machine learning programs focused on automated food detection and calorie estimation.  \n• Built and refined image classification methods to recognize various food types.  \n• Integrated third-party AI interfaces like the OpenAI API to generate precise calorie estimations and enhance user engagement. "
     }
   ],
   "theme": {
