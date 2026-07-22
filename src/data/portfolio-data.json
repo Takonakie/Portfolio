@@ -146,15 +146,45 @@
       "sfx": "キラ✦"
     },
     {
-      "title": "New Project",
-      "jp": "新章",
-      "desc": "Description of the new awesome project.",
+      "title": "Interview Analyzer",
+      "jp": "Company",
+      "desc": "The Interview Analyzer System is a multimodal candidate evaluation platform built on a dual runtime architecture (Bun/ElysiaJS backend and Python FastAPI AI microservices). It processes candidate interviews using DeepFace for facial expressions, OpenAI Whisper for transcription and filler-word detection, and Praat for voice quality analysis, feeding these signals into an MBTI and soft-skills estimation engine.",
       "tags": [
-        "React",
-        "AI"
+        "Multimodal AI Platform",
+        "Facial & Voice Analytics",
+        "MBTI Behavioral Estimation",
+        "ElysiaJS & FastAPI Microservices"
+      ],
+      "link": "#",
+      "sfx": "バン!"
+    },
+    {
+      "title": "Container Prediction System",
+      "jp": "Company",
+      "desc": "An exploratory research notebook evaluating a two-stage machine learning pipeline (XGBoost) to predict container transit durations. The workflow incorporates strict cycle extraction, temporal splitting, rolling historical lags, and hyperparameter tuning. Due to poor data quality limiting model accuracy, the project functions primarily as a technical feasibility study.",
+      "tags": [
+        "Machine Learning",
+        "XGBoost",
+        "Exploratory Feasibility Study",
+        "Supply Chain Analytics"
       ],
       "link": "#",
       "sfx": "ドン!"
+    },
+    {
+      "title": "SAFE Care System",
+      "jp": "Personal",
+      "desc": "The SAFE Care System is an enterprise-grade healthcare and facility management backend platform. Built on top of a modular architecture, it provides robust RESTful APIs, role-based access control (RBAC), secure authentication pipelines, and integrated AI-powered computer vision capabilities (utilizing YOLOv8) for automated monitoring and compliance workflows within clinical or care facility environments.",
+      "tags": [
+        "Full-Stack Backend API",
+        "Computer Vision",
+        "YOLOv8",
+        "FastAPI",
+        "Python",
+        "Healthcare & Safety Automation"
+      ],
+      "link": "https://github.com/Helion39/SAFE-Care-System.git",
+      "sfx": "ゴゴゴ"
     }
   ],
   "experience": [
