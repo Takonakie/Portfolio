@@ -126,6 +126,8 @@ export default function AdminDashboard() {
   const [saveStatus, setSaveStatus] = useState<{ type: "success" | "error"; msg: string } | null>(null);
   const [commitMsg, setCommitMsg] = useState("");
 
+  const primaryColor = formData.theme?.colors?.primary || "#ec4899";
+
   if (!isAuthenticated) {
     return (
       <div className="min-h-screen bg-zinc-950 text-white flex flex-col items-center justify-center p-6">
@@ -134,7 +136,8 @@ export default function AdminDashboard() {
           <p className="font-bold mb-6 text-zinc-400">Please log in from the portfolio page first.</p>
           <button
             onClick={() => navigate("/")}
-            className="btn-press bg-pink-500 text-black font-black uppercase px-6 py-3 border-4 border-black cursor-pointer"
+            className="btn-press text-black font-black uppercase px-6 py-3 border-4 border-black cursor-pointer"
+            style={{ backgroundColor: primaryColor }}
           >
             ← Back to Portfolio
           </button>
@@ -182,17 +185,28 @@ export default function AdminDashboard() {
   return (
     <div className="min-h-screen bg-zinc-950 text-white font-sans flex flex-col">
       {/* HEADER */}
-      <header className="bg-zinc-900 border-b-4 border-pink-500 px-6 py-4 flex flex-wrap items-center justify-between gap-4 sticky top-0 z-50">
+      <header
+        className="bg-zinc-900 border-b-4 px-6 py-4 flex flex-wrap items-center justify-between gap-4 sticky top-0 z-50"
+        style={{ borderColor: primaryColor }}
+      >
         <div className="flex items-center gap-4">
           <button
             onClick={() => navigate("/")}
-            className="bg-zinc-800 text-white font-bold px-3 py-1 border-2 border-white hover:border-pink-500 text-sm cursor-pointer"
+            className="bg-zinc-800 text-white font-bold px-3 py-1 border-2 text-sm cursor-pointer"
+            style={{ borderColor: "#ffffff" }}
+            onFocus={(e) => (e.currentTarget.style.borderColor = primaryColor)}
+            onBlur={(e) => (e.currentTarget.style.borderColor = "#ffffff")}
+            onMouseEnter={(e) => (e.currentTarget.style.borderColor = primaryColor)}
+            onMouseLeave={(e) => (e.currentTarget.style.borderColor = "#ffffff")}
           >
             ← Portfolio
           </button>
           <div>
             <h1 className="text-xl font-black text-white uppercase tracking-tight">
-              PORTFOLIO CMS <span className="text-pink-500 text-sm">管理パネル</span>
+              PORTFOLIO CMS{" "}
+              <span className="text-sm font-bold" style={{ color: primaryColor }}>
+                管理パネル
+              </span>
             </h1>
           </div>
         </div>
@@ -229,7 +243,10 @@ export default function AdminDashboard() {
       {/* MAIN CONTENT AREA */}
       <div className="flex-1 flex flex-col md:flex-row">
         {/* SIDEBAR TABS */}
-        <aside className="w-full md:w-64 bg-zinc-900 border-r-0 md:border-r-4 border-pink-500 flex flex-row md:flex-col overflow-x-auto shrink-0">
+        <aside
+          className="w-full md:w-64 bg-zinc-900 border-r-0 md:border-r-4 flex flex-row md:flex-col overflow-x-auto shrink-0"
+          style={{ borderColor: primaryColor }}
+        >
           {(
             [
               ["profile", "📝 Profile"],
@@ -242,19 +259,24 @@ export default function AdminDashboard() {
               ["contact", "📬 Contact"],
               ["theme", "🎨 Theme & Colors"],
             ] as [TabType, string][]
-          ).map(([key, label]) => (
-            <button
-              key={key}
-              onClick={() => setActiveTab(key)}
-              className={`px-5 py-3 text-left font-black uppercase text-sm border-b md:border-b-0 md:border-l-4 transition-colors whitespace-nowrap cursor-pointer ${
-                activeTab === key
-                  ? "bg-pink-500 text-black border-black md:border-l-black"
-                  : "text-zinc-400 hover:text-white hover:bg-zinc-800 border-transparent"
-              }`}
-            >
-              {label}
-            </button>
-          ))}
+          ).map(([key, label]) => {
+            const isActive = activeTab === key;
+            return (
+              <button
+                key={key}
+                onClick={() => setActiveTab(key)}
+                className={`px-5 py-3 text-left font-black uppercase text-sm border-b md:border-b-0 md:border-l-4 transition-colors whitespace-nowrap cursor-pointer`}
+                style={{
+                  backgroundColor: isActive ? primaryColor : "transparent",
+                  color: isActive ? "#000000" : "#a1a1aa",
+                  borderLeftColor: isActive ? "#000000" : "transparent",
+                  borderBottomColor: "rgba(0,0,0,0.2)",
+                }}
+              >
+                {label}
+              </button>
+            );
+          })}
         </aside>
 
         {/* TAB PANELS */}
@@ -262,7 +284,7 @@ export default function AdminDashboard() {
           {/* 1. PROFILE TAB */}
           {activeTab === "profile" && (
             <div className="flex flex-col gap-6">
-              <h2 className="text-2xl font-black text-pink-500 uppercase border-b-2 border-zinc-800 pb-2">
+              <h2 className="text-2xl font-black uppercase border-b-2 border-zinc-800 pb-2" style={{ color: primaryColor }}>
                 Profile Information
               </h2>
 
@@ -365,7 +387,8 @@ export default function AdminDashboard() {
                     <img
                       src={formData.profile.photoUrl}
                       alt="Avatar"
-                      className="w-16 h-16 object-cover border-2 border-pink-500 rounded"
+                      className="w-16 h-16 object-cover border-2 rounded"
+                      style={{ borderColor: primaryColor }}
                     />
                   ) : (
                     <div className="w-16 h-16 bg-zinc-800 border-2 border-zinc-700 flex items-center justify-center text-xs text-zinc-500 font-bold">
@@ -386,7 +409,7 @@ export default function AdminDashboard() {
           {/* 2. STATS TAB */}
           {activeTab === "stats" && (
             <div className="flex flex-col gap-6">
-              <h2 className="text-2xl font-black text-pink-500 uppercase border-b-2 border-zinc-800 pb-2">
+              <h2 className="text-2xl font-black uppercase border-b-2 border-zinc-800 pb-2" style={{ color: primaryColor }}>
                 About Section Statistics
               </h2>
 
@@ -429,7 +452,7 @@ export default function AdminDashboard() {
           {/* 3. TYPING WORDS TAB */}
           {activeTab === "typing" && (
             <div className="flex flex-col gap-6">
-              <h2 className="text-2xl font-black text-pink-500 uppercase border-b-2 border-zinc-800 pb-2">
+              <h2 className="text-2xl font-black uppercase border-b-2 border-zinc-800 pb-2" style={{ color: primaryColor }}>
                 Hero Typing Animation Words
               </h2>
 
@@ -466,7 +489,8 @@ export default function AdminDashboard() {
                     typingWords: [...formData.typingWords, "New Specialty"],
                   })
                 }
-                className="btn-press bg-pink-500 text-black font-black uppercase px-4 py-2 border-2 border-black self-start cursor-pointer"
+                className="btn-press text-black font-black uppercase px-4 py-2 border-2 border-black self-start cursor-pointer"
+                style={{ backgroundColor: primaryColor }}
               >
                 + Add Word
               </button>
@@ -476,7 +500,7 @@ export default function AdminDashboard() {
           {/* 4. TICKER TAB */}
           {activeTab === "ticker" && (
             <div className="flex flex-col gap-6">
-              <h2 className="text-2xl font-black text-pink-500 uppercase border-b-2 border-zinc-800 pb-2">
+              <h2 className="text-2xl font-black uppercase border-b-2 border-zinc-800 pb-2" style={{ color: primaryColor }}>
                 Marquee Ticker Items
               </h2>
 
@@ -513,7 +537,8 @@ export default function AdminDashboard() {
                     tickerItems: [...formData.tickerItems, "NEW TICKER ITEM"],
                   })
                 }
-                className="btn-press bg-pink-500 text-black font-black uppercase px-4 py-2 border-2 border-black self-start cursor-pointer"
+                className="btn-press text-black font-black uppercase px-4 py-2 border-2 border-black self-start cursor-pointer"
+                style={{ backgroundColor: primaryColor }}
               >
                 + Add Ticker Item
               </button>
@@ -523,7 +548,7 @@ export default function AdminDashboard() {
           {/* 5. SKILLS TAB */}
           {activeTab === "skills" && (
             <div className="flex flex-col gap-6">
-              <h2 className="text-2xl font-black text-pink-500 uppercase border-b-2 border-zinc-800 pb-2">
+              <h2 className="text-2xl font-black uppercase border-b-2 border-zinc-800 pb-2" style={{ color: primaryColor }}>
                 Skill Groups
               </h2>
 
@@ -538,7 +563,8 @@ export default function AdminDashboard() {
                         updated[groupIdx].group = e.target.value;
                         setFormData({ ...formData, skills: updated });
                       }}
-                      className="bg-zinc-800 border-2 border-pink-500 p-2 font-black text-pink-500 uppercase outline-none"
+                      className="bg-zinc-800 border-2 p-2 font-black uppercase outline-none"
+                      style={{ borderColor: primaryColor, color: primaryColor }}
                       placeholder="Group Title"
                     />
                     <input
@@ -616,7 +642,8 @@ export default function AdminDashboard() {
                     ],
                   })
                 }
-                className="btn-press bg-pink-500 text-black font-black uppercase px-4 py-2 border-2 border-black self-start cursor-pointer"
+                className="btn-press text-black font-black uppercase px-4 py-2 border-2 border-black self-start cursor-pointer"
+                style={{ backgroundColor: primaryColor }}
               >
                 + Add Skill Group
               </button>
@@ -626,7 +653,7 @@ export default function AdminDashboard() {
           {/* 6. PROJECTS TAB */}
           {activeTab === "projects" && (
             <div className="flex flex-col gap-6">
-              <h2 className="text-2xl font-black text-pink-500 uppercase border-b-2 border-zinc-800 pb-2">
+              <h2 className="text-2xl font-black uppercase border-b-2 border-zinc-800 pb-2" style={{ color: primaryColor }}>
                 Projects Shipped
               </h2>
 
@@ -716,17 +743,67 @@ export default function AdminDashboard() {
                       />
                     </div>
                     <div>
-                      <label className="block text-xs font-bold uppercase mb-1">Tags (comma-separated)</label>
-                      <input
-                        type="text"
-                        value={proj.tags.join(", ")}
-                        onChange={(e) => {
-                          const updated = [...formData.projects];
-                          updated[projIdx].tags = e.target.value.split(",").map((t) => t.trim()).filter(Boolean);
-                          setFormData({ ...formData, projects: updated });
-                        }}
-                        className="w-full bg-zinc-800 border border-zinc-600 p-2 font-bold text-white outline-none"
-                      />
+                      <label className="block text-xs font-bold uppercase mb-1">Tags</label>
+                      <div className="flex flex-wrap gap-1 mb-2">
+                        {proj.tags.map((t, tIdx) => (
+                          <span key={tIdx} className="bg-zinc-800 text-white text-xs font-bold px-2 py-1 flex items-center gap-1 border border-zinc-700">
+                            {t}
+                            <button
+                              type="button"
+                              onClick={() => {
+                                const updated = [...formData.projects];
+                                updated[projIdx].tags = updated[projIdx].tags.filter((_, idx) => idx !== tIdx);
+                                setFormData({ ...formData, projects: updated });
+                              }}
+                              className="text-red-500 hover:text-red-300 font-bold ml-1 cursor-pointer"
+                            >
+                              ✕
+                            </button>
+                          </span>
+                        ))}
+                      </div>
+                      <div className="flex gap-2">
+                        <input
+                          type="text"
+                          id={`new-tag-input-${projIdx}`}
+                          placeholder="Add new tag..."
+                          className="bg-zinc-800 border border-zinc-600 p-2 text-xs text-white outline-none flex-1"
+                          onKeyDown={(e) => {
+                            if (e.key === "Enter") {
+                              e.preventDefault();
+                              const val = e.currentTarget.value.trim();
+                              if (val) {
+                                const updated = [...formData.projects];
+                                if (!updated[projIdx].tags.includes(val)) {
+                                  updated[projIdx].tags.push(val);
+                                  setFormData({ ...formData, projects: updated });
+                                }
+                                e.currentTarget.value = "";
+                              }
+                            }
+                          }}
+                        />
+                        <button
+                          type="button"
+                          onClick={() => {
+                            const inputEl = document.getElementById(`new-tag-input-${projIdx}`) as HTMLInputElement;
+                            if (inputEl) {
+                              const val = inputEl.value.trim();
+                              if (val) {
+                                const updated = [...formData.projects];
+                                if (!updated[projIdx].tags.includes(val)) {
+                                  updated[projIdx].tags.push(val);
+                                  setFormData({ ...formData, projects: updated });
+                                }
+                                inputEl.value = "";
+                              }
+                            }
+                          }}
+                          className="bg-zinc-800 text-white border border-zinc-600 px-3 py-1 text-xs font-bold hover:border-pink-500 cursor-pointer"
+                        >
+                          + Add
+                        </button>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -749,7 +826,8 @@ export default function AdminDashboard() {
                     ],
                   })
                 }
-                className="btn-press bg-pink-500 text-black font-black uppercase px-4 py-2 border-2 border-black self-start cursor-pointer"
+                className="btn-press text-black font-black uppercase px-4 py-2 border-2 border-black self-start cursor-pointer"
+                style={{ backgroundColor: primaryColor }}
               >
                 + Add Project
               </button>
@@ -759,7 +837,7 @@ export default function AdminDashboard() {
           {/* 7. EXPERIENCE TAB */}
           {activeTab === "experience" && (
             <div className="flex flex-col gap-6">
-              <h2 className="text-2xl font-black text-pink-500 uppercase border-b-2 border-zinc-800 pb-2">
+              <h2 className="text-2xl font-black uppercase border-b-2 border-zinc-800 pb-2" style={{ color: primaryColor }}>
                 Work Experience
               </h2>
 
@@ -851,7 +929,8 @@ export default function AdminDashboard() {
                     ],
                   })
                 }
-                className="btn-press bg-pink-500 text-black font-black uppercase px-4 py-2 border-2 border-black self-start cursor-pointer"
+                className="btn-press text-black font-black uppercase px-4 py-2 border-2 border-black self-start cursor-pointer"
+                style={{ backgroundColor: primaryColor }}
               >
                 + Add Experience
               </button>
@@ -861,7 +940,7 @@ export default function AdminDashboard() {
           {/* 8. CONTACT TAB */}
           {activeTab === "contact" && (
             <div className="flex flex-col gap-6">
-              <h2 className="text-2xl font-black text-pink-500 uppercase border-b-2 border-zinc-800 pb-2">
+              <h2 className="text-2xl font-black uppercase border-b-2 border-zinc-800 pb-2" style={{ color: primaryColor }}>
                 Contact & Links
               </h2>
 
@@ -947,7 +1026,7 @@ export default function AdminDashboard() {
           {/* 9. THEME TAB */}
           {activeTab === "theme" && (
             <div className="flex flex-col gap-6">
-              <h2 className="text-2xl font-black text-pink-500 uppercase border-b-2 border-zinc-800 pb-2">
+              <h2 className="text-2xl font-black uppercase border-b-2 border-zinc-800 pb-2" style={{ color: primaryColor }}>
                 Color Palette Customization
               </h2>
 
@@ -966,7 +1045,12 @@ export default function AdminDashboard() {
                           },
                         })
                       }
-                      className="px-3 py-1 font-bold text-xs uppercase border-2 border-black bg-zinc-800 hover:border-pink-500 flex items-center gap-2 cursor-pointer"
+                      className="px-3 py-1 font-bold text-xs uppercase border-2 border-black bg-zinc-800 flex items-center gap-2 cursor-pointer"
+                      style={{ borderColor: "#000000" }}
+                      onFocus={(e) => (e.currentTarget.style.borderColor = primaryColor)}
+                      onBlur={(e) => (e.currentTarget.style.borderColor = "#000000")}
+                      onMouseEnter={(e) => (e.currentTarget.style.borderColor = primaryColor)}
+                      onMouseLeave={(e) => (e.currentTarget.style.borderColor = "#000000")}
                     >
                       <span
                         className="w-3 h-3 rounded-full border border-black"
@@ -1031,8 +1115,11 @@ export default function AdminDashboard() {
             <button
               onClick={handleSave}
               disabled={saving}
-              className="w-full sm:w-auto btn-press bg-pink-500 text-black font-black uppercase px-8 py-3 border-4 border-black shadow-lg hover:bg-pink-400 disabled:opacity-50 cursor-pointer"
-              style={{ boxShadow: "4px 4px 0 #000" }}
+              className="w-full sm:w-auto btn-press text-black font-black uppercase px-8 py-3 border-4 border-black shadow-lg disabled:opacity-50 cursor-pointer"
+              style={{
+                boxShadow: "4px 4px 0 #000",
+                backgroundColor: primaryColor,
+              }}
             >
               {saving ? "Saving & Committing..." : "💾 SAVE & COMMIT →"}
             </button>

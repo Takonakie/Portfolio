@@ -22,19 +22,21 @@
     "RAG Systems",
     "AI Agents",
     "Computer Vision",
-    "Machine Learning"
+    "Machine Learning",
+    "Software Developer"
   ],
   "tickerItems": [
     "AI ENGINEER",
     "★",
-    "リヴァン",
+    "技術革新",
     "★",
-    "TAKE YOUR TIME",
+    "SOLVING COMPLEX PROBLEMS",
     "★",
     "LLM × AGENTS × VISION",
     "★",
-    "全力疾走",
-    "★"
+    "人工知能",
+    "★",
+    "SOFTWARE DEVELOPER"
   ],
   "skills": [
     {
@@ -72,13 +74,15 @@
   ],
   "projects": [
     {
-      "title": "Sensei-GPT",
-      "jp": "第一話",
-      "desc": "RAG-powered study assistant that answers questions from 10k+ documents with cited sources. 92% answer accuracy on eval set.",
+      "title": "Decision Support System",
+      "jp": "",
+      "desc": "An intelligent automated incident analysis and decision support system engineered to streamline operational reporting and accelerate decision-making, built using Python, the OpenRouter API for multi-tier LLM prompt routing and reasoning, and a modular ChromaDB vector database for Retrieval-Augmented Generation (RAG) to retrieve historical case data for context-aware recommendations. The system is fully containerized with Docker, utilizes Traefik for traffic management and reverse proxy, and includes automated PDF generation tools for comprehensive incident documentation.",
       "tags": [
-        "LangChain",
-        "Pinecone",
-        "FastAPI"
+        "Artificial Intelligence",
+        "OpenRouter API",
+        "RAG",
+        "Docker",
+        "Python"
       ],
       "link": "#",
       "sfx": "ドン!"
@@ -143,7 +147,7 @@
   "theme": {
     "preset": "default",
     "colors": {
-      "primary": "#ec4899",
+      "primary": "#0055FF",
       "primaryText": "#000000",
       "background": "#09090b",
       "surface": "#18181b",

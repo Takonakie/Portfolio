@@ -24,6 +24,8 @@ export default function LoginModal({ isOpen, onClose, onLoginSuccess }: LoginMod
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
+  const passwordRef = React.useRef<HTMLInputElement>(null);
+
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose();
@@ -60,6 +62,8 @@ export default function LoginModal({ isOpen, onClose, onLoginSuccess }: LoginMod
     }
   };
 
+  const primaryColor = data.theme?.colors?.primary || "#ec4899";
+
   return (
     <div
       className="fixed inset-0 z-[200] flex items-center justify-center p-4"
@@ -68,24 +72,28 @@ export default function LoginModal({ isOpen, onClose, onLoginSuccess }: LoginMod
       <div className="absolute inset-0 bg-black/70 backdrop-blur-sm" />
 
       <div
-        className="relative bg-zinc-900 border-4 border-pink-500 p-8 w-full max-w-md shadow-2xl z-10"
-        style={{ clipPath: "polygon(0 0, 100% 0, 98% 100%, 2% 100%)" }}
+        className="relative bg-zinc-900 border-4 p-8 w-full max-w-md shadow-2xl z-10"
+        style={{
+          clipPath: "polygon(0 0, 100% 0, 98% 100%, 2% 100%)",
+          borderColor: primaryColor,
+        }}
         onClick={(e) => e.stopPropagation()}
       >
         <button
           onClick={onClose}
-          className="absolute top-3 right-4 text-pink-500 font-black text-xl hover:text-white transition-colors"
+          className="absolute top-3 right-4 font-black text-xl hover:text-white transition-colors cursor-pointer"
+          style={{ color: primaryColor }}
         >
           ✕
         </button>
 
         <h2
           className="text-2xl font-black text-white uppercase mb-1"
-          style={{ textShadow: "3px 3px 0 var(--c-primary, #ec4899)" }}
+          style={{ textShadow: `3px 3px 0 ${primaryColor}` }}
         >
           ADMIN LOGIN
         </h2>
-        <p className="text-pink-500 font-bold text-sm mb-6">管理者ログイン</p>
+        <p className="font-bold text-sm mb-6" style={{ color: primaryColor }}>管理者ログイン</p>
 
         <form onSubmit={handleSubmit} className="flex flex-col gap-4">
           <div>
@@ -96,7 +104,18 @@ export default function LoginModal({ isOpen, onClose, onLoginSuccess }: LoginMod
               type="text"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
-              className="w-full bg-zinc-800 border-2 border-white text-white px-4 py-2 font-bold focus:border-pink-500 outline-none"
+              onKeyDown={(e) => {
+                if (e.key === "Enter") {
+                  e.preventDefault();
+                  passwordRef.current?.focus();
+                }
+              }}
+              className="w-full bg-zinc-800 border-2 border-white text-white px-4 py-2 font-bold outline-none"
+              style={{
+                borderColor: "#ffffff",
+              }}
+              onFocus={(e) => (e.target.style.borderColor = primaryColor)}
+              onBlur={(e) => (e.target.style.borderColor = "#ffffff")}
               placeholder="Enter username..."
               autoFocus
             />
@@ -107,10 +126,16 @@ export default function LoginModal({ isOpen, onClose, onLoginSuccess }: LoginMod
               Password
             </label>
             <input
+              ref={passwordRef}
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full bg-zinc-800 border-2 border-white text-white px-4 py-2 font-bold focus:border-pink-500 outline-none"
+              className="w-full bg-zinc-800 border-2 border-white text-white px-4 py-2 font-bold outline-none"
+              style={{
+                borderColor: "#ffffff",
+              }}
+              onFocus={(e) => (e.target.style.borderColor = primaryColor)}
+              onBlur={(e) => (e.target.style.borderColor = "#ffffff")}
               placeholder="Enter password..."
             />
           </div>
@@ -124,8 +149,11 @@ export default function LoginModal({ isOpen, onClose, onLoginSuccess }: LoginMod
           <button
             type="submit"
             disabled={loading}
-            className="btn-press bg-pink-500 text-black font-black uppercase px-6 py-3 border-4 border-black mt-2 hover:bg-pink-400 disabled:opacity-50 cursor-pointer"
-            style={{ boxShadow: "5px 5px 0 #000" }}
+            className="btn-press text-black font-black uppercase px-6 py-3 border-4 border-black mt-2 disabled:opacity-50 cursor-pointer"
+            style={{
+              boxShadow: "5px 5px 0 #000",
+              backgroundColor: primaryColor,
+            }}
           >
             {loading ? "Authenticating..." : "LOGIN →"}
           </button>

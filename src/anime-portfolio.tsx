@@ -35,12 +35,29 @@ const ANIM_CSS = `
   0% { transform: translateX(0) skewX(-14deg); }
   100% { transform: translateX(160%) skewX(-14deg); }
 }
+@keyframes slashWipeIn {
+  0% { transform: translateX(-160%) skewX(-14deg); }
+  100% { transform: translateX(0) skewX(-14deg); }
+}
 .wipe-layer {
   position: fixed; top: 0; bottom: 0; left: -30%; width: 160%;
   z-index: 100; pointer-events: none;
   animation: slashWipeOut 0.9s cubic-bezier(0.8, 0, 0.2, 1) forwards;
 }
 .wipe-pink { animation-delay: 0.12s; }
+
+/* Transition actions */
+.wipe-layer.transition-in {
+  animation: slashWipeIn 0.7s cubic-bezier(0.8, 0, 0.2, 1) forwards;
+  animation-delay: 0s;
+}
+.wipe-layer.transition-out {
+  animation: slashWipeOut 0.9s cubic-bezier(0.8, 0, 0.2, 1) forwards;
+  animation-delay: 0s;
+}
+.wipe-pink.transition-out {
+  animation-delay: 0.12s;
+}
 
 /* 2. Scroll-reveal panels */
 .reveal { opacity: 0; transform: translateY(48px) rotate(2.5deg) scale(0.97); }
@@ -267,6 +284,29 @@ export default function AnimePortfolio({ onTriggerLogin }: AnimePortfolioProps) 
     }
   };
 
+  // 'idle' = normal state (layer offscreen), 'in' = covering screen, 'out' = sliding away
+  const [transitionState, setTransitionState] = useState<"idle" | "in" | "out">("idle");
+
+  const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
+    e.preventDefault();
+    setTransitionState("in");
+
+    // Wait for the slide-in animation to complete
+    setTimeout(() => {
+      const el = document.getElementById(targetId);
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth" });
+      }
+      // Start sliding away
+      setTransitionState("out");
+      
+      // Reset back to idle after animation finishes
+      setTimeout(() => {
+        setTransitionState("idle");
+      }, 900);
+    }, 700);
+  };
+
   const colors = data.theme?.colors || {
     primary: "#ec4899",
     primaryText: "#000000",
@@ -304,8 +344,8 @@ export default function AnimePortfolio({ onTriggerLogin }: AnimePortfolioProps) 
       <style>{ANIM_CSS}</style>
 
       {/* 1. slash-in page load */}
-      <div className="wipe-layer bg-black" />
-      <div className="wipe-layer wipe-pink" style={{ backgroundColor: "var(--c-primary, #ec4899)" }} />
+      <div className={`wipe-layer bg-black ${transitionState === "in" ? "transition-in" : transitionState === "out" ? "transition-out" : ""}`} />
+      <div className={`wipe-layer wipe-pink ${transitionState === "in" ? "transition-in" : transitionState === "out" ? "transition-out" : ""}`} style={{ backgroundColor: "var(--c-primary, #ec4899)" }} />
 
       {/* speed lines background */}
       <div
@@ -332,7 +372,7 @@ export default function AnimePortfolio({ onTriggerLogin }: AnimePortfolioProps) 
 
           <div className="hidden sm:flex gap-6 font-bold uppercase text-sm">
             {NAV_SECTIONS.map((s) => (
-              <a key={s} href={`#${s.toLowerCase()}`} className="nav-strike transition-colors" style={{ color: "var(--c-text, #ffffff)" }}>
+              <a key={s} href={`#${s.toLowerCase()}`} onClick={(e) => handleLinkClick(e, s.toLowerCase())} className="nav-strike transition-colors" style={{ color: "var(--c-text, #ffffff)" }}>
                 {s}
               </a>
             ))}
@@ -344,7 +384,7 @@ export default function AnimePortfolio({ onTriggerLogin }: AnimePortfolioProps) 
         {menuOpen && (
           <div className="sm:hidden flex flex-col gap-3 px-6 pb-4 font-bold uppercase text-sm" style={{ backgroundColor: "var(--c-surface, #18181b)" }}>
             {NAV_SECTIONS.map((s) => (
-              <a key={s} href={`#${s.toLowerCase()}`} onClick={() => setMenuOpen(false)}>
+              <a key={s} href={`#${s.toLowerCase()}`} onClick={(e) => { setMenuOpen(false); handleLinkClick(e, s.toLowerCase()); }}>
                 {s}
               </a>
             ))}
@@ -358,7 +398,7 @@ export default function AnimePortfolio({ onTriggerLogin }: AnimePortfolioProps) 
         <div className="absolute top-8 right-6 text-8xl sm:text-9xl font-black opacity-20 select-none" style={{ writingMode: "vertical-rl", color: "var(--c-primary, #ec4899)" }}>
           {data.profile.titleJp}
         </div>
-        <p className="font-bold tracking-widest mb-2" style={{ color: "var(--c-primary, #ec4899)" }}>第一章 — CHAPTER 01</p>
+        <p className="font-bold tracking-widest mb-2" style={{ color: "var(--c-primary, #ec4899)" }}>INTRODUCTION — CHAPTER 01</p>
 
         <h1 className="glitch-name text-6xl sm:text-8xl font-black uppercase leading-none mb-2">
           {data.profile.name}
@@ -374,6 +414,7 @@ export default function AnimePortfolio({ onTriggerLogin }: AnimePortfolioProps) 
         <div className="flex flex-wrap gap-4 mt-4">
           <a
             href="#projects"
+            onClick={(e) => handleLinkClick(e, "projects")}
             className="btn-press font-black uppercase px-8 py-3 border-4 shadow-lg"
             style={{
               backgroundColor: "var(--c-primary, #ec4899)",
@@ -383,10 +424,11 @@ export default function AnimePortfolio({ onTriggerLogin }: AnimePortfolioProps) 
               boxShadow: "5px 5px 0 var(--c-border, #000000)",
             }}
           >
-            Read the Manga →
+            Explore Projects →
           </a>
           <a
             href="#contact"
+            onClick={(e) => handleLinkClick(e, "contact")}
             className="btn-press font-black uppercase px-8 py-3 border-4"
             style={{
               backgroundColor: "var(--c-card-bg, #ffffff)",
@@ -428,7 +470,7 @@ export default function AnimePortfolio({ onTriggerLogin }: AnimePortfolioProps) 
 
       {/* ABOUT */}
       <section id="about" className="max-w-6xl mx-auto px-6 py-16">
-        <SectionTitle en="About" jp="自己紹介" />
+        <SectionTitle en="About" jp="TENTANG" />
         <div className="grid md:grid-cols-3 gap-6">
           <Reveal className="md:col-span-2">
             <div
@@ -442,7 +484,7 @@ export default function AnimePortfolio({ onTriggerLogin }: AnimePortfolioProps) 
             >
               <div className="absolute -top-5 -left-3 bg-black text-white font-black px-4 py-1 uppercase text-sm">Panel 01</div>
               <p className="text-lg font-semibold leading-relaxed">{data.profile.about}</p>
-              <div className="absolute bottom-2 right-4 font-black text-3xl select-none" style={{ color: "var(--c-primary, #ec4899)" }}>ドキドキ</div>
+              <div className="absolute bottom-2 right-4 font-black text-3xl select-none" style={{ color: "var(--c-primary, #ec4899)" }}>コツコツ</div>
             </div>
           </Reveal>
           <Reveal delay={120}>
@@ -467,7 +509,7 @@ export default function AnimePortfolio({ onTriggerLogin }: AnimePortfolioProps) 
 
       {/* SKILLS */}
       <section id="skills" className="max-w-6xl mx-auto px-6 py-16">
-        <SectionTitle en="Skills" jp="スキル" />
+        <SectionTitle en="Skills" jp="KEMAMPUAN" />
         <div className="grid sm:grid-cols-3 gap-6">
           {data.skills.map((s, i) => (
             <Reveal key={s.group} delay={i * 120}>
@@ -507,7 +549,7 @@ export default function AnimePortfolio({ onTriggerLogin }: AnimePortfolioProps) 
 
       {/* PROJECTS */}
       <section id="projects" className="max-w-6xl mx-auto px-6 py-16">
-        <SectionTitle en="Projects" jp="作品集" />
+        <SectionTitle en="Projects" jp="PROJEK" />
         <div className="grid md:grid-cols-2 gap-8">
           {data.projects.map((p, i) => (
             <Reveal key={p.title} delay={(i % 2) * 130}>
@@ -553,7 +595,7 @@ export default function AnimePortfolio({ onTriggerLogin }: AnimePortfolioProps) 
 
       {/* EXPERIENCE */}
       <section id="experience" className="max-w-6xl mx-auto px-6 py-16">
-        <SectionTitle en="Experience" jp="経歴" />
+        <SectionTitle en="Experience" jp="PENGALAMAN" />
         <div className="relative pl-8 border-l-4 flex flex-col gap-10" style={{ borderColor: "var(--c-primary, #ec4899)" }}>
           {data.experience.map((e, i) => (
             <Reveal key={e.role} delay={i * 130}>
@@ -578,7 +620,7 @@ export default function AnimePortfolio({ onTriggerLogin }: AnimePortfolioProps) 
 
       {/* CONTACT */}
       <section id="contact" className="max-w-6xl mx-auto px-6 py-20">
-        <SectionTitle en="Contact" jp="連絡先" />
+        <SectionTitle en="Contact" jp="KONTAK" />
         <Reveal>
           <div className="border-4 p-10 relative" style={{ backgroundColor: "var(--c-primary, #ec4899)", color: "var(--c-primary-text, #000000)", borderColor: "var(--c-border, #000000)", ...halftone }}>
             <div className="absolute -top-6 right-8 bg-black font-black px-4 py-2 text-2xl rotate-3 select-none" style={{ color: "var(--c-primary)" }}>ゴゴゴゴ</div>
