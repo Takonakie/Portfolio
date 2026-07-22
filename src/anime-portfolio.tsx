@@ -573,7 +573,7 @@ export default function AnimePortfolio({ onTriggerLogin }: AnimePortfolioProps) 
                   {p.sfx}
                 </div>
                 <div className="text-xs font-black uppercase mb-1" style={{ color: "var(--c-text-muted, #a1a1aa)" }}>
-                  {p.jp} — Episode {String(i + 1).padStart(2, "0")}
+                  {p.jp} — Project {String(i + 1).padStart(2, "0")}
                 </div>
                 <h3 className="text-2xl font-black uppercase mb-3 transition-colors group-hover:opacity-80">{p.title}</h3>
                 <p className="font-semibold text-sm leading-relaxed mb-4">{p.desc}</p>

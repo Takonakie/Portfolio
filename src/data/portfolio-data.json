@@ -23,7 +23,8 @@
     "AI Agents",
     "Computer Vision",
     "Machine Learning",
-    "Software Developer"
+    "Software Developer",
+    "Data Scientist"
   ],
   "tickerItems": [
     "AI ENGINEER",
@@ -75,7 +76,7 @@
   "projects": [
     {
       "title": "Decision Support System",
-      "jp": "",
+      "jp": "Company",
       "desc": "An automated incident analysis and decision support system built with Python, OpenRouter API for multi-tier LLM reasoning, and ChromaDB for RAG-powered historical case retrieval. Containerized with Docker and managed via Traefik, the platform delivers context-aware operational recommendations and automated incident documentation.",
       "tags": [
         "AI",
@@ -89,7 +90,7 @@
     },
     {
       "title": "n8n RAG Chatbot",
-      "jp": "",
+      "jp": "Personal",
       "desc": "An advanced RAG chatbot repository featuring a decoupled architecture built with n8n workflows and the Model Context Protocol (MCP), integrated with a search engine for real-time data retrieval and dynamic tool execution.",
       "tags": [
         "RAG Chatbot",
@@ -103,7 +104,7 @@
     },
     {
       "title": "Stock Analytics Dashboard",
-      "jp": "第三話",
+      "jp": "Personal",
       "desc": "A full-stack stock analytics pipeline and dashboard engineered to track, analyze, and visualize market data. The platform features automated data processing pipelines backed by Supabase and a responsive frontend built using React, TypeScript, Vite, and Tailwind CSS. At its core, the system incorporates robust predictive and analytical models.",
       "tags": [
         "Stock Analytics",
@@ -116,8 +117,8 @@
       "sfx": "ゴゴゴ"
     },
     {
-      "title": "Waifu-Diffusion Lab",
-      "jp": "第四話",
+      "title": "People Counting System",
+      "jp": "Company",
       "desc": "This project is an automated room occupancy and people-counting system engineered to run efficiently on edge devices like the Raspberry Pi 4, utilizing standard USB webcams. It combines computer vision, object tracking, local persistence, and a modern web dashboard to monitor indoor room traffic in real time.",
       "tags": [
         "People Counting System",
