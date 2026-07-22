@@ -71,7 +71,7 @@
     },
     {
       "group": "DevOps",
-      "jp": "新規",
+      "jp": "",
       "items": [
         "Docker",
         "Traefik",
@@ -80,7 +80,7 @@
     },
     {
       "group": "API & Tools",
-      "jp": "新規",
+      "jp": "",
       "items": [
         "OpenAI API",
         "Whisper",
