@@ -610,7 +610,7 @@ export default function AnimePortfolio({ onTriggerLogin }: AnimePortfolioProps) 
                       {e.period}
                     </span>
                   </div>
-                  <p className="font-semibold text-sm" style={{ color: "var(--c-text-muted, #a1a1aa)" }}>{e.desc}</p>
+                  <p className="font-semibold text-sm whitespace-pre-line" style={{ color: "var(--c-text-muted, #a1a1aa)" }}>{e.desc}</p>
                 </div>
               </div>
             </Reveal>

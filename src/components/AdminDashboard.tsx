@@ -899,16 +899,88 @@ export default function AdminDashboard() {
                   </div>
 
                   <div>
-                    <label className="block text-xs font-bold uppercase mb-1">Description</label>
+                    <div className="flex items-center justify-between mb-1">
+                      <label className="block text-xs font-bold uppercase">Description</label>
+                      <button
+                        type="button"
+                        onClick={() => {
+                          const updated = [...formData.experience];
+                          const textarea = document.getElementById(`exp-desc-${expIdx}`) as HTMLTextAreaElement;
+                          if (textarea) {
+                            const start = textarea.selectionStart;
+                            const end = textarea.selectionEnd;
+                            const text = exp.desc;
+                            const bulletText = text.substring(0, start) + "• " + text.substring(end);
+                            updated[expIdx].desc = bulletText;
+                            setFormData({ ...formData, experience: updated });
+                            // refocus and set cursor position after bullet
+                            setTimeout(() => {
+                              textarea.focus();
+                              textarea.setSelectionRange(start + 2, start + 2);
+                            }, 50);
+                          }
+                        }}
+                        className="text-xs bg-zinc-800 border border-zinc-600 px-2 py-1 font-bold hover:border-pink-500 cursor-pointer"
+                      >
+                        • Insert Bullet
+                      </button>
+                    </div>
                     <textarea
-                      rows={2}
+                      id={`exp-desc-${expIdx}`}
+                      rows={6}
                       value={exp.desc}
                       onChange={(e) => {
                         const updated = [...formData.experience];
                         updated[expIdx].desc = e.target.value;
                         setFormData({ ...formData, experience: updated });
                       }}
-                      className="w-full bg-zinc-800 border border-zinc-600 p-2 font-bold text-white outline-none"
+                      onKeyDown={(e) => {
+                        if (e.key === "Enter") {
+                          const textarea = e.currentTarget;
+                          const start = textarea.selectionStart;
+                          const text = textarea.value;
+                          
+                          // Find current line text up to cursor
+                          const linesBefore = text.substring(0, start).split("\n");
+                          const currentLine = linesBefore[linesBefore.length - 1];
+                          
+                          // If current line starts with bullet '•' (with or without spaces)
+                          if (currentLine.trim().startsWith("•")) {
+                            e.preventDefault();
+                            
+                            // If line is ONLY bullet '•' (plus possible spaces), delete it (break list)
+                            if (currentLine.trim() === "•") {
+                              const beforeLineStart = text.substring(0, start - currentLine.length);
+                              const afterCursor = text.substring(start);
+                              const updatedText = beforeLineStart + afterCursor;
+                              
+                              const updated = [...formData.experience];
+                              updated[expIdx].desc = updatedText;
+                              setFormData({ ...formData, experience: updated });
+                              
+                              setTimeout(() => {
+                                textarea.focus();
+                                textarea.setSelectionRange(beforeLineStart.length, beforeLineStart.length);
+                              }, 50);
+                            } else {
+                              // Auto insert newline and '• '
+                              const beforeCursor = text.substring(0, start);
+                              const afterCursor = text.substring(start);
+                              const updatedText = beforeCursor + "\n• " + afterCursor;
+                              
+                              const updated = [...formData.experience];
+                              updated[expIdx].desc = updatedText;
+                              setFormData({ ...formData, experience: updated });
+                              
+                              setTimeout(() => {
+                                textarea.focus();
+                                textarea.setSelectionRange(start + 3, start + 3);
+                              }, 50);
+                            }
+                          }
+                        }
+                      }}
+                      className="w-full bg-zinc-800 border border-zinc-600 p-2 font-mono text-xs text-white outline-none"
                     />
                   </div>
                 </div>
