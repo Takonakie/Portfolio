@@ -76,7 +76,7 @@
     {
       "title": "Decision Support System",
       "jp": "",
-      "desc": "An intelligent automated incident analysis and decision support system engineered to streamline operational reporting and accelerate decision-making, built using Python, the OpenRouter API for multi-tier LLM prompt routing and reasoning, and a modular ChromaDB vector database for Retrieval-Augmented Generation (RAG) to retrieve historical case data for context-aware recommendations. The system is fully containerized with Docker, utilizes Traefik for traffic management and reverse proxy, and includes automated PDF generation tools for comprehensive incident documentation.",
+      "desc": "An automated incident analysis and decision support system built with Python, OpenRouter API for multi-tier LLM reasoning, and ChromaDB for RAG-powered historical case retrieval. Containerized with Docker and managed via Traefik, the platform delivers context-aware operational recommendations and automated incident documentation.",
       "tags": [
         "Artificial Intelligence",
         "OpenRouter API",
