@@ -758,8 +758,17 @@ export default function AnimePortfolio({ onTriggerLogin }: AnimePortfolioProps) 
                     <h3 className="font-black uppercase text-xl">
                       {e.role} <span style={{ color: "var(--c-primary, #ec4899)" }}>@ {e.company}</span>
                     </h3>
-                    <span className="font-bold text-xs px-2 py-1 border border-black" style={{ backgroundColor: "var(--c-card-bg, #ffffff)", color: "var(--c-card-text, #000000)" }}>
-                      {e.period}
+                    <span
+                      className="font-black text-xs px-3 py-1 border-2 border-black"
+                      style={{
+                        backgroundColor: "var(--c-primary, #ec4899)",
+                        color: "var(--c-primary-text, #000000)",
+                        transform: "skewX(-10deg) rotate(-2deg)",
+                        boxShadow: "3px 3px 0 var(--c-border, #000000)",
+                        display: "inline-block"
+                      }}
+                    >
+                      <span style={{ transform: "skewX(10deg)", display: "inline-block" }}>{e.period}</span>
                     </span>
                   </div>
                   <div className="font-semibold text-sm leading-relaxed space-y-2" style={{ color: "var(--c-text-muted, #a1a1aa)" }}>
