@@ -565,6 +565,22 @@ export default function AnimePortfolio({ onTriggerLogin }: AnimePortfolioProps) 
             </div>
           </Reveal>
         </div>
+
+        {data.profile.tagline && (
+          <Reveal delay={200}>
+            <div className="mt-8 text-center">
+              <p
+                className="text-xl sm:text-2xl font-black uppercase tracking-wider italic"
+                style={{
+                  color: "var(--c-primary, #ec4899)",
+                  textShadow: "1px 1px 0 var(--c-border, #000000)"
+                }}
+              >
+                “ {data.profile.tagline} ”
+              </p>
+            </div>
+          </Reveal>
+        )}
       </section>
 
       {/* SKILLS */}
@@ -734,7 +750,7 @@ export default function AnimePortfolio({ onTriggerLogin }: AnimePortfolioProps) 
         <SectionTitle en="Experience" jp="PENGALAMAN" />
         <div className="relative pl-8 border-l-4 flex flex-col gap-10" style={{ borderColor: "var(--c-primary, #ec4899)" }}>
           {data.experience.map((e, i) => (
-            <Reveal key={e.role} delay={i * 130}>
+            <Reveal key={`${e.role}-${e.company}-${i}`} delay={i * 130}>
               <div className="relative">
                 <div className="absolute -left-11 top-1 w-5 h-5 border-4 border-black rotate-45" style={{ backgroundColor: "var(--c-primary, #ec4899)" }} />
                 <div className="card-pop border-4 p-6" style={{ backgroundColor: "var(--c-surface, #18181b)", borderColor: "var(--c-text, #ffffff)" }}>

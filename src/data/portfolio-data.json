@@ -40,35 +40,52 @@
   ],
   "skills": [
     {
-      "group": "ML & DL",
+      "group": "AI & Machine Learning",
       "jp": "",
       "items": [
-        "PyTorch",
-        "TensorFlow",
-        "Scikit-learn",
-        "Hugging Face"
-      ]
-    },
-    {
-      "group": "LLM Stack",
-      "jp": "",
-      "items": [
-        "LangChain",
         "RAG",
-        "Fine-tuning",
-        "Vector DBs",
-        "Prompt Eng."
+        "LLM",
+        "Computer Vision",
+        "Predictive ML",
+        "Model Fine-Tuning"
       ]
     },
     {
-      "group": "Engineering",
+      "group": "Programming",
       "jp": "",
       "items": [
         "Python",
-        "FastAPI",
+        "JavaScript",
+        "API Development",
+        "Full Stack"
+      ]
+    },
+    {
+      "group": "Data",
+      "jp": "",
+      "items": [
+        "Data Science",
+        "Data Analysis",
+        "SQL/DBeaver"
+      ]
+    },
+    {
+      "group": "DevOps",
+      "jp": "新規",
+      "items": [
         "Docker",
-        "AWS",
-        "PostgreSQL"
+        "Traefik",
+        "Edge/Raspberry Pi"
+      ]
+    },
+    {
+      "group": "API & Tools",
+      "jp": "新規",
+      "items": [
+        "OpenAI API",
+        "Whisper",
+        "MediaPipe",
+        "DeepFace"
       ]
     }
   ],
