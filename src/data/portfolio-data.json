@@ -210,7 +210,7 @@
   "theme": {
     "preset": "default",
     "colors": {
-      "primary": "#0055FF",
+      "primary": "#00BBFA",
       "primaryText": "#000000",
       "background": "#09090b",
       "surface": "#18181b",
