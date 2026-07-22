@@ -44,7 +44,7 @@
   "skills": [
     {
       "group": "ML & DL",
-      "jp": "機械学習",
+      "jp": "",
       "items": [
         "PyTorch",
         "TensorFlow",
@@ -54,7 +54,7 @@
     },
     {
       "group": "LLM Stack",
-      "jp": "大規模言語モデル",
+      "jp": "",
       "items": [
         "LangChain",
         "RAG",
@@ -65,7 +65,7 @@
     },
     {
       "group": "Engineering",
-      "jp": "エンジニアリング",
+      "jp": "",
       "items": [
         "Python",
         "FastAPI",
@@ -130,6 +130,17 @@
       ],
       "link": "#",
       "sfx": "キラ✦"
+    },
+    {
+      "title": "New Project",
+      "jp": "新章",
+      "desc": "Description of the new awesome project.",
+      "tags": [
+        "React",
+        "AI"
+      ],
+      "link": "#",
+      "sfx": "ドン!"
     }
   ],
   "experience": [
@@ -137,19 +148,19 @@
       "role": "AI Engineer Intern",
       "company": "PT Salam Pacific Indonesia Lines",
       "period": "2026 — 2026",
-      "desc": "Shipping LLM features used by 100k+ users. Built internal RAG platform and eval framework."
+      "desc": "• Designed, optimized, and deployed practical AI solutions that enhance operational decision-making, automate monitoring, and streamline business workflows.  \n• Owned the full development lifecycle of software and AI delivery, building responsive user interfaces and robust Python backends for business tools like the AI Decision Support System (DSS), PoLokk, and Interview Analyst applications.  \n• Constructed end-to-end data pipelines for machine learning model training, containerized the Cargo Prediction project, and handled the configuration and physical installation of hardware prototyping modules (like Raspberry Pi motherboards and external LCD screens)."
     },
     {
       "role": "IT Storage & Observability Intern",
       "company": "PT Surya Citra Media, Tbk",
       "period": "2025 — 2025",
-      "desc": "Built recommendation models and data pipelines. Reduced inference latency by 60%."
+      "desc": "• Deployed and managed comprehensive monitoring stacks (Metrics, Logs, Synthetics, and Uptime) for PostgreSQL, MySQL, MSSQL, Redis, and internal endpoints.  \n• Refactored and enhanced internal engineering applications (Microtools) using Python (Streamlit) for better maintainability.  \n• Integrated Static Application Security Testing (SAST) using Semgrep to build dashboards displaying security scan data clearly for users.  \n• Managed infrastructure troubleshooting, handled Linux environments, and coordinated Docker-based local simulations for development."
     },
     {
-      "role": "AI Engineer",
+      "role": "AI Engineer Intern",
       "company": "LapisAI",
       "period": "2025 — 2025",
-      "desc": "Responsibilities and achievements."
+      "desc": "• Developed machine learning programs focused on automated food detection and calorie estimation.  • Built and refined image classification methods to recognize various food types.  \n• Integrated third-party AI interfaces like the OpenAI API to generate precise calorie estimations and enhance user engagement. "
     }
   ],
   "theme": {
