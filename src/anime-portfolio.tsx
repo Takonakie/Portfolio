@@ -214,25 +214,30 @@ function Stars() {
   );
 }
 
+const CLIP = "polygon(0 0, 100% 0, 100% 78%, 94% 100%, 0 100%)";
+
 function SpeechBubble({ children, className = "" }: SpeechBubbleProps) {
+  const border = "var(--c-border, #000000)";
+  const bg = "var(--c-card-bg, #ffffff)";
   return (
     <div
-      className={`relative border-4 border-black rounded-3xl px-6 py-4 font-bold shadow-lg ${className}`}
-      style={{
-        backgroundColor: "var(--c-card-bg, #ffffff)",
-        color: "var(--c-card-text, #000000)",
-        borderColor: "var(--c-border, #000000)",
-      }}
+      className={`relative inline-block font-bold ${className}`}
+      style={{ transform: "skewX(-3deg)" }}
     >
-      {children}
+      {/* border layer (shows through as the 4px outline) */}
+      <div className="absolute inset-0" style={{ background: border, clipPath: CLIP }} />
+      {/* body layer, inset by 4px to reveal the border */}
       <div
-        className="absolute -bottom-4 left-10 w-0 h-0 border-l-8 border-r-8 border-l-transparent border-r-transparent border-t-black"
-        style={{ borderTopWidth: "16px", borderTopStyle: "solid", borderTopColor: "var(--c-border, #000000)" }}
-      />
-      <div
-        className="absolute left-10 w-0 h-0 border-l-8 border-r-8 border-l-transparent border-r-transparent"
-        style={{ bottom: "-11px", borderTopWidth: "13px", borderTopStyle: "solid", borderTopColor: "var(--c-card-bg, #ffffff)", marginLeft: "0px" }}
-      />
+        className="relative px-6 py-4"
+        style={{
+          background: bg,
+          color: "var(--c-card-text, #000000)",
+          clipPath: CLIP,
+          margin: "4px",
+        }}
+      >
+        <div style={{ transform: "skewX(3deg)" }}>{children}</div>
+      </div>
     </div>
   );
 }
@@ -295,7 +300,15 @@ export default function AnimePortfolio({ onTriggerLogin }: AnimePortfolioProps) 
     setTimeout(() => {
       const el = document.getElementById(targetId);
       if (el) {
-        el.scrollIntoView({ behavior: "smooth" });
+        // Calculate offset position (element top minus navbar height of approx 80px)
+        const navbarHeight = 85; 
+        const elementPosition = el.getBoundingClientRect().top + window.scrollY;
+        const offsetPosition = elementPosition - navbarHeight;
+
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: "smooth"
+        });
       }
       // Start sliding away
       setTransitionState("out");
@@ -306,6 +319,13 @@ export default function AnimePortfolio({ onTriggerLogin }: AnimePortfolioProps) 
       }, 900);
     }, 700);
   };
+
+  const [projectPage, setProjectPage] = useState<number>(1);
+  const projectsPerPage = 4;
+  const totalProjectPages = Math.ceil(data.projects.length / projectsPerPage);
+  const indexOfLastProject = projectPage * projectsPerPage;
+  const indexOfFirstProject = indexOfLastProject - projectsPerPage;
+  const currentProjects = data.projects.slice(indexOfFirstProject, indexOfLastProject);
 
   const colors = data.theme?.colors || {
     primary: "#ec4899",
@@ -354,18 +374,34 @@ export default function AnimePortfolio({ onTriggerLogin }: AnimePortfolioProps) 
       />
 
       {/* NAV */}
-      <nav className="sticky top-0 z-50 border-b-4" style={{ backgroundColor: "var(--c-surface, #18181b)", borderColor: "var(--c-primary, #ec4899)" }}>
+      <nav className="fixed top-0 left-0 right-0 z-50 border-b-4" style={{ backgroundColor: "var(--c-surface, #18181b)", borderColor: "var(--c-primary, #ec4899)" }}>
         <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
           <div className="flex items-center gap-2 select-none cursor-pointer" onClick={handleBadgeClick}>
             <span
-              className="font-black px-3 py-1 text-lg transition-transform hover:scale-105"
-              style={{
-                backgroundColor: "var(--c-primary, #ec4899)",
-                color: "var(--c-primary-text, #000000)",
-                clipPath: "polygon(0 0, 100% 0, 92% 100%, 0 100%)",
-              }}
+              className="relative inline-block transition-transform hover:scale-105"
+              style={{ transform: "skewX(-4deg)" }}
             >
-              {data.profile.name}
+              {/* offset shadow slab */}
+              <span
+                className="absolute inset-0"
+                style={{
+                  backgroundColor: "var(--c-border, #000000)",
+                  transform: "translate(3px, 3px)",
+                  clipPath: "polygon(0 0, 100% 0, 92% 100%, 0 100%)",
+                }}
+              />
+              <span
+                className="relative block font-black px-3 py-1 text-lg"
+                style={{
+                  backgroundColor: "var(--c-primary, #ec4899)",
+                  color: "var(--c-primary-text, #000000)",
+                  clipPath: "polygon(0 0, 100% 0, 92% 100%, 0 100%)",
+                }}
+              >
+                <span style={{ transform: "skewX(4deg)", display: "inline-block" }}>
+                  {data.profile.name}
+                </span>
+              </span>
             </span>
             <span className="font-bold" style={{ color: "var(--c-primary, #ec4899)" }}>{data.profile.nameJp}</span>
           </div>
@@ -393,7 +429,7 @@ export default function AnimePortfolio({ onTriggerLogin }: AnimePortfolioProps) 
       </nav>
 
       {/* HERO — manga cover page */}
-      <header className="relative max-w-6xl mx-auto px-6 pt-16 pb-24">
+      <header className="relative max-w-6xl mx-auto px-6 pt-28 pb-24">
         <Stars />
         <div className="absolute top-8 right-6 text-8xl sm:text-9xl font-black opacity-20 select-none" style={{ writingMode: "vertical-rl", color: "var(--c-primary, #ec4899)" }}>
           {data.profile.titleJp}
@@ -405,7 +441,7 @@ export default function AnimePortfolio({ onTriggerLogin }: AnimePortfolioProps) 
         </h1>
         <p className="text-2xl sm:text-3xl font-black uppercase mb-8 tracking-wide" style={{ color: "var(--c-primary, #ec4899)" }}>{data.profile.title}</p>
 
-        <SpeechBubble className="max-w-xl mb-10">
+        <SpeechBubble className="max-w-xl w-full mb-10">
           <span className="text-zinc-500 text-sm block mb-1">I build...</span>
           <span className="text-2xl">{typed}</span>
           <span className="animate-pulse text-2xl" style={{ color: "var(--c-primary, #ec4899)" }}>▌</span>
@@ -443,26 +479,50 @@ export default function AnimePortfolio({ onTriggerLogin }: AnimePortfolioProps) 
         </div>
 
         {/* Avatar image container */}
-        <div className="absolute bottom-24 right-0 hidden lg:flex items-end">
-          {data.profile.photoUrl ? (
-            <img
-              src={data.profile.photoUrl}
-              alt="Avatar"
-              className="w-64 h-80 object-cover border-4 border-black shadow-2xl rounded-t-3xl"
-              style={{ borderColor: "var(--c-primary, #ec4899)" }}
-            />
-          ) : (
+        <div className="absolute bottom-24 right-0 hidden lg:block">
+          <div className="relative inline-block" style={{ transform: "skewX(-4deg)" }}>
+            {/* offset slab behind */}
             <div
-              className="w-64 h-80 border-4 border-dashed rounded-t-full flex items-center justify-center text-center p-6 font-bold"
-              style={{ ...halftonePink, borderColor: "var(--c-primary, #ec4899)", color: "var(--c-primary, #ec4899)" }}
+              className="absolute inset-0"
+              style={{
+                background: "var(--c-primary, #ec4899)",
+                transform: "translate(12px, 12px)",
+                clipPath: "polygon(0 0, 100% 0, 100% 90%, 90% 100%, 0 100%)",
+              }}
+            />
+            {/* white keyline + frame */}
+            <div
+              className="relative p-1"
+              style={{
+                background: "#fff",
+                clipPath: "polygon(0 0, 100% 0, 100% 90%, 90% 100%, 0 100%)",
+              }}
             >
-              YOUR ANIME
-              <br />
-              AVATAR HERE
-              <br />
-              (swap with art)
+              {data.profile.photoUrl ? (
+                <img
+                  src={data.profile.photoUrl}
+                  alt="Avatar"
+                  className="block w-64 h-80 object-cover"
+                  style={{ clipPath: "polygon(0 0, 100% 0, 100% 90%, 90% 100%, 0 100%)" }}
+                />
+              ) : (
+                <div
+                  className="w-64 h-80 flex items-center justify-center text-center p-6 font-bold"
+                  style={{
+                    ...halftonePink,
+                    color: "var(--c-primary, #ec4899)",
+                    clipPath: "polygon(0 0, 100% 0, 100% 90%, 90% 100%, 0 100%)",
+                  }}
+                >
+                  YOUR ANIME
+                  <br />
+                  AVATAR HERE
+                  <br />
+                  (swap with art)
+                </div>
+              )}
             </div>
-          )}
+          </div>
         </div>
       </header>
 
@@ -551,46 +611,122 @@ export default function AnimePortfolio({ onTriggerLogin }: AnimePortfolioProps) 
       <section id="projects" className="max-w-6xl mx-auto px-6 py-16">
         <SectionTitle en="Projects" jp="PROJEK" />
         <div className="grid md:grid-cols-2 gap-8">
-          {data.projects.map((p, i) => (
-            <Reveal key={p.title} delay={(i % 2) * 130}>
-              <a
-                href={p.link}
-                className="card-pop group relative border-4 p-6 block shadow-xl h-full"
-                style={{
-                  backgroundColor: "var(--c-card-bg, #ffffff)",
-                  color: "var(--c-card-text, #000000)",
-                  borderColor: "var(--c-border, #000000)",
-                  transform: `rotate(${i % 2 === 0 ? -1 : 1}deg)`,
-                }}
-              >
+          {Array.from({ length: projectsPerPage }).map((_, i) => {
+            const p = currentProjects[i];
+            const realIndex = indexOfFirstProject + i;
+
+            if (!p) {
+              return (
                 <div
-                  className="sfx-badge absolute -top-4 -right-3 font-black px-3 py-1 border-2 border-black text-2xl rotate-6 select-none"
+                  key={`empty-${i}`}
+                  className="border-4 border-dashed p-6 opacity-10 select-none pointer-events-none rounded-lg"
                   style={{
-                    backgroundColor: "var(--c-primary, #ec4899)",
-                    color: "var(--c-primary-text, #000000)",
+                    borderColor: "var(--c-text-muted, #a1a1aa)",
+                    transform: `rotate(${i % 2 === 0 ? -1 : 1}deg)`,
+                    minHeight: "260px",
+                    ...halftone,
+                  }}
+                />
+              );
+            }
+
+            return (
+              <Reveal key={p.title} delay={(i % 2) * 130}>
+                <a
+                  href={p.link}
+                  className="card-pop group relative border-4 p-6 block shadow-xl h-full"
+                  style={{
+                    backgroundColor: "var(--c-card-bg, #ffffff)",
+                    color: "var(--c-card-text, #000000)",
+                    borderColor: "var(--c-border, #000000)",
+                    transform: `rotate(${i % 2 === 0 ? -1 : 1}deg)`,
+                    minHeight: "260px",
                   }}
                 >
-                  {p.sfx}
-                </div>
-                <div className="text-xs font-black uppercase mb-1" style={{ color: "var(--c-text-muted, #a1a1aa)" }}>
-                  {p.jp} — Project {String(i + 1).padStart(2, "0")}
-                </div>
-                <h3 className="text-2xl font-black uppercase mb-3 transition-colors group-hover:opacity-80">{p.title}</h3>
-                <p className="font-semibold text-sm leading-relaxed mb-4">{p.desc}</p>
-                <div className="flex flex-wrap gap-2">
-                  {p.tags.map((t) => (
-                    <span key={t} className="bg-black text-white text-xs font-bold px-2 py-1 uppercase">
-                      {t}
-                    </span>
-                  ))}
-                </div>
-                <div className="mt-4 font-black uppercase text-sm" style={{ color: "var(--c-primary, #ec4899)" }}>
-                  To be continued... →
-                </div>
-              </a>
-            </Reveal>
-          ))}
+                  <div
+                    className="sfx-badge absolute -top-4 -right-3 font-black px-3 py-1 border-2 border-black text-2xl rotate-6 select-none"
+                    style={{
+                      backgroundColor: "var(--c-primary, #ec4899)",
+                      color: "var(--c-primary-text, #000000)",
+                    }}
+                  >
+                    {p.sfx}
+                  </div>
+                  <div className="text-xs font-black uppercase mb-1" style={{ color: "var(--c-text-muted, #a1a1aa)" }}>
+                    {p.jp} — Project {String(realIndex + 1).padStart(2, "0")}
+                  </div>
+                  <h3 className="text-2xl font-black uppercase mb-3 transition-colors group-hover:opacity-80">{p.title}</h3>
+                  <p className="font-semibold text-sm leading-relaxed mb-4">{p.desc}</p>
+                  <div className="flex flex-wrap gap-2">
+                    {p.tags.map((t) => (
+                      <span key={t} className="bg-black text-white text-xs font-bold px-2 py-1 uppercase">
+                        {t}
+                      </span>
+                    ))}
+                  </div>
+                  <div className="mt-4 font-black uppercase text-sm" style={{ color: "var(--c-primary, #ec4899)" }}>
+                    To be continued... →
+                  </div>
+                </a>
+              </Reveal>
+            );
+          })}
         </div>
+
+        {/* MANGA STYLE PAGINATION CONTROLS */}
+        {totalProjectPages > 1 && (
+          <div className="flex justify-center items-center gap-4 mt-12">
+            <button
+              onClick={() => setProjectPage((prev) => Math.max(prev - 1, 1))}
+              disabled={projectPage === 1}
+              className="btn-press font-black uppercase px-4 py-2 border-4 border-black text-sm disabled:opacity-30 cursor-pointer"
+              style={{
+                backgroundColor: "var(--c-card-bg, #ffffff)",
+                color: "var(--c-card-text, #000000)",
+                clipPath: "polygon(10% 0, 100% 0, 90% 100%, 0 100%)",
+                boxShadow: "3px 3px 0 var(--c-border, #000000)",
+              }}
+            >
+              ← Prev Vol
+            </button>
+            
+            <div className="flex items-center gap-2 font-black">
+              {Array.from({ length: totalProjectPages }).map((_, idx) => {
+                const pageNum = idx + 1;
+                const isActive = projectPage === pageNum;
+                return (
+                  <button
+                    key={pageNum}
+                    onClick={() => setProjectPage(pageNum)}
+                    className="w-10 h-10 border-4 border-black font-black flex items-center justify-center cursor-pointer transition-colors"
+                    style={{
+                      backgroundColor: isActive ? "var(--c-primary, #ec4899)" : "var(--c-card-bg, #ffffff)",
+                      color: isActive ? "var(--c-primary-text, #000000)" : "var(--c-card-text, #000000)",
+                      transform: `rotate(${pageNum % 2 === 0 ? 3 : -3}deg)`,
+                      boxShadow: "2px 2px 0 var(--c-border, #000000)",
+                    }}
+                  >
+                    {pageNum}
+                  </button>
+                );
+              })}
+            </div>
+
+            <button
+              onClick={() => setProjectPage((prev) => Math.min(prev + 1, totalProjectPages))}
+              disabled={projectPage === totalProjectPages}
+              className="btn-press font-black uppercase px-4 py-2 border-4 border-black text-sm disabled:opacity-30 cursor-pointer"
+              style={{
+                backgroundColor: "var(--c-card-bg, #ffffff)",
+                color: "var(--c-card-text, #000000)",
+                clipPath: "polygon(10% 0, 100% 0, 90% 100%, 0 100%)",
+                boxShadow: "3px 3px 0 var(--c-border, #000000)",
+              }}
+            >
+              Next Vol →
+            </button>
+          </div>
+        )}
       </section>
 
       {/* EXPERIENCE */}
@@ -641,7 +777,13 @@ export default function AnimePortfolio({ onTriggerLogin }: AnimePortfolioProps) 
             <h3 className="text-3xl sm:text-4xl font-black uppercase mb-3">{data.contact.contactHeading}</h3>
             <p className="font-bold mb-8">{data.contact.contactSubtext}</p>
             <div className="flex flex-wrap gap-4">
-              <a href={`mailto:${data.contact.email}`} className="btn-press bg-black text-white font-black uppercase px-6 py-3 border-4 border-black" style={{ boxShadow: "4px 4px 0 #fff" }}>
+              <a
+                href={`https://mail.google.com/mail/?view=cm&fs=1&to=${data.contact.email}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-press bg-black text-white font-black uppercase px-6 py-3 border-4 border-black"
+                style={{ boxShadow: "4px 4px 0 #fff" }}
+              >
                 ✉ Email
               </a>
               <a href={data.contact.github} className="btn-press bg-black text-white font-black uppercase px-6 py-3 border-4 border-black" style={{ boxShadow: "4px 4px 0 #fff" }}>
